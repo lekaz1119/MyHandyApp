@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    android:paddingTop="3dp"
+    tools:context=".MainActivity"
+    tools:showIn="@layout/activity_main">
+
+    <ImageButton
+        android:id="@+id/btnNYT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/newyorktimes_logo"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="1dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"/>
+
+    <ImageButton
+        android:id="@+id/btnNews"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnNYT"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="1dp"
+        android:background="@drawable/news_logo" />
+
+    <ImageButton
+        android:id="@+id/btnDictionary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnNews"
+        android:layout_alignParentLeft="true"
+        android:background="@drawable/dictionary_logo"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="1dp"/>
+
+    <ImageButton
+        android:id="@+id/btnFilights"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/flighttracker_logo"
+        android:layout_below="@+id/btnDictionary"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="1dp"/>
+
+</RelativeLayout>

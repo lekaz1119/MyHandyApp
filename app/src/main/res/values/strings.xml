@@ -1,0 +1,31 @@
+<resources>
+    <!-- Main Activity -->
+    <string name="app_name">HandyApp</string>
+    <string name="action_main_help">Help</string>
+    <string name="action_help">Help</string>
+    <string name="action_about">About</string>
+    <string name="toast_about">Application version 1.0 \n Developers: \n
+        Lena Kazantseva, \n Tara Davoodnia, \n Ruth Anne Sebastian , \n Maxim Kasyanenko
+    </string>
+    <string name="main_help">My Handy App contains 4 mini apps.\n 1.New York Times Article Search,\n 2.News Feed,\n
+         3.Merriam Webster Dictionary and\n 4.Flight Status tracker\n\nClick on one of the buttons to go the desired service.
+    </string>
+    <string name="txt_search">Search</string>
+    <string name="txt_reset">Reset</string>
+
+    <!-- Flight tracker Activity -->
+    <string name="action_flight_tracker">Flight Tracker</string>
+    <string name="flight_search_hint">Enter Airport Code</string>
+
+
+
+    <!-- New York Times Article Search Activity -->
+    <string name="action_nyt">New York Times</string>
+
+    <!-- News Feed -->
+    <string name="action_news">News Feed</string>
+
+    <!-- Merriam Webster Dictionary -->
+    <string name="action_dictionary">Merriam Webster Dictionary</string>
+
+</resources>

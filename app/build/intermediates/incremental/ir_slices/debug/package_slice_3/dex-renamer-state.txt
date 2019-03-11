@@ -1,0 +1,4 @@
+#Sun Mar 10 18:42:21 GMT-05:00 2019
+base.0=D\:\\Olena\\AndroidStudioProjects\\FinalProject\\MyHandyApp\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\3
+path.0=classes.dex
+renamed.0=classes.dex

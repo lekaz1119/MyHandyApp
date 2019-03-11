@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">My Handy App</string>
+    <string name="action_main_help">Settings</string>
+    <string name="action_help">Help</string>
+    <string name="action_about">About</string>
+    <string name="txt_welcome">Welcome My Handy Application</string>
+</resources>
+

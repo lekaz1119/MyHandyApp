@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/refresher"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.5">
+
+        <ListView
+            android:id="@+id/message_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:transcriptMode="alwaysScroll"
+            android:stackFromBottom="true"/>
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1.0">
+        <Button
+            android:id="@+id/btnReset"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight=".4"
+            android:text="@string/txt_reset"
+            android:layout_gravity="left"
+            android:textSize="12dp"/>
+
+            <EditText
+            android:id="@+id/txtAirportCode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight=".2"
+            android:hint="@string/flight_search_hint"
+            android:layout_gravity="center"/>
+
+        <Button
+            android:id="@+id/btnSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight=".4"
+            android:text="@string/txt_search"
+            android:layout_gravity="right"
+            android:textSize="12dp"/>
+        </LinearLayout>
+</LinearLayout>

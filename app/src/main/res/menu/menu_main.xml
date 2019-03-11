@@ -1,0 +1,48 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.myhandyapp.MainActivity">
+    <item
+        android:id="@+id/action_main_help"
+        android:orderInCategory="100"
+        android:title="@string/action_main_help"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_about"
+        android:orderInCategory="100"
+        android:title="@string/action_about"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/action_nyt"
+        android:orderInCategory="1"
+        android:title="@string/action_nyt"
+        android:icon="@drawable/nyt_ico"
+        android:visible="false"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/action_news"
+        android:orderInCategory="2"
+        android:title="@string/action_news"
+        android:icon="@drawable/news_ico"
+        android:visible="false"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/action_dictionary"
+        android:orderInCategory="3"
+        android:title="@string/action_dictionary"
+        android:icon="@drawable/dictionary_ico"
+        android:visible="false"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/action_flight_tracker"
+        android:orderInCategory="4"
+        android:title="@string/action_flight_tracker"
+        android:icon="@drawable/plane_ico"
+        android:visible="false"
+        app:showAsAction="always"/>
+
+</menu>
