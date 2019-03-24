@@ -12,20 +12,34 @@
     </string>
     <string name="txt_search">Search</string>
     <string name="txt_reset">Reset</string>
+    <string name="ok">OK</string>
+    <string name="go_back">Go back?</string>
+    <string name="cancel">Cancel</string>
 
     <!-- Flight tracker Activity -->
     <string name="action_flight_tracker">Flight Tracker</string>
     <string name="flight_search_hint">Enter Airport Code</string>
+    <string name="flight_tracker_about">Flight Tracker data provided by \n Aviation-edge.com \n</string>
+    <string name="flight_tracker_help">Flight Tracker version 1.0 \n Developed by: Lena Kazantseva\n\n
+           To list currnet flights from an airport, enter Airport Code and Click Search; \n\n
+           Scroll and select desired flight. Click on the Flight recoder to get more details about the flight.\n\n
+           Click on reset to clear all flights</string>
 
 
 
     <!-- New York Times Article Search Activity -->
     <string name="action_nyt">New York Times</string>
+    <string name="nyt_about">Data provided by \n New York Times website \n</string>
+    <string name="nyt_help">NYT  help ... \n\n change as you need</string>
 
     <!-- News Feed -->
     <string name="action_news">News Feed</string>
+    <string name="news_about">New data provided by \n webhose.io \n</string>
+    <string name="news_help">News  help ... \n\n change as you need </string>
 
     <!-- Merriam Webster Dictionary -->
     <string name="action_dictionary">Merriam Webster Dictionary</string>
+    <string name="dictionary_about">Data provided by Merriam Webster Dictionary\n www.dictionaryapi.com  \n</string>
+    <string name="dictionary_help">Dictinary help ... \n\n change as you need </string>
 
 </resources>

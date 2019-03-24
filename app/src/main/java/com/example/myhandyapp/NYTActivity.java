@@ -29,7 +29,7 @@ import com.example.myhandyapp.sql.FlightsDataSource;
 import java.util.Arrays;
 import java.util.List;
 
-public class NYTActivity extends AppCompatActivity {
+public class NYTActivity extends AbstractActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,68 +38,6 @@ public class NYTActivity extends AppCompatActivity {
 
 
     }
-
-
-    //hide/show menu items to reflect current activity options
-    @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-        if(Build.VERSION.SDK_INT > 11) {
-            invalidateOptionsMenu();
-            menu.findItem(R.id.action_flight_tracker).setVisible(true);
-            menu.findItem(R.id.action_news).setVisible(true);
-            menu.findItem(R.id.action_nyt).setVisible(false);
-            menu.findItem(R.id.action_dictionary).setVisible(true);
-        }
-        return super.onPrepareOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        CoordinatorLayout coordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinatorLayout);
-        //View layout= findViewById(R.id.layout);
-
-        switch (id) {
-            case R.id.action_about:
-                Toast.makeText(getApplicationContext(), "change it as you need ", Toast.LENGTH_LONG).show();
-                break;
-            case R.id.action_main_help:
-                Toast.makeText(getApplicationContext(), "change it as you need ", Toast.LENGTH_LONG).show();
-                break;
-            case R.id.action_flight_tracker:
-                //Give directions to go from this page, to flightTracker page
-                Intent flightTrackerPage = new Intent(NYTActivity.this, FlightTrackerActivity.class);
-                //Now make the transition:
-                startActivity( flightTrackerPage);
-                break;
-            case R.id.action_news:
-                //Give directions to go from this page, to NYT page
-                Intent newsPage = new Intent(NYTActivity.this, NewsActivity.class);
-                //Now make the transition:
-                startActivity( newsPage);
-                break;
-            case R.id.action_nyt:
-                break;
-            case R.id.action_dictionary:
-                //Give directions to go from this page, to Dictionary page
-                Intent dictionaryPage = new Intent(NYTActivity.this, DictionaryActivity.class);
-                //Now make the transition:
-                startActivity( dictionaryPage);
-                break;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
 
 
 
