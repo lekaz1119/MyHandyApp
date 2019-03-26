@@ -75,6 +75,8 @@ public class FlightsDataSource {
     private Flight cursorToFlight(Cursor cursor) {
         Flight flight = new Flight();
         flight.setId(cursor.getLong(0));
+        flight.setAirport(cursor.getString(1));
+        flight.setAirline(cursor.getString(2));
         return flight;
     }
 

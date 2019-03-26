@@ -41,5 +41,6 @@
     <string name="action_dictionary">Merriam Webster Dictionary</string>
     <string name="dictionary_about">Data provided by Merriam Webster Dictionary\n www.dictionaryapi.com  \n</string>
     <string name="dictionary_help">Dictinary help ... \n\n change as you need </string>
+    <string name="avatar">avatar</string>
 
 </resources>

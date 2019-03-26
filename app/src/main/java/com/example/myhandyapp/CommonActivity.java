@@ -1,39 +1,30 @@
 package com.example.myhandyapp;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
-import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Layout;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.BaseAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.ListAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.myhandyapp.listitems.Flight;
-import com.example.myhandyapp.sql.FlightsDataSource;
+import com.example.myhandyapp.listitems.ListItem;
 
 import java.util.Arrays;
 import java.util.List;
 
-public abstract class AbstractActivity extends AppCompatActivity {
+public abstract class CommonActivity extends AppCompatActivity {
     SharedPreferences sp;
 
     private int snackBarMessageID;
@@ -46,6 +37,18 @@ public abstract class AbstractActivity extends AppCompatActivity {
         sp = getSharedPreferences("shared_prefs", Context.MODE_PRIVATE);
 
     }
+
+    protected static void hideKeyboard(Activity activity) {
+        InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        //Find the currently focused view, so we can grab the correct window token from it.
+        View view = activity.getCurrentFocus();
+        //If no view currently has focus, create a new one, just so we can grab a window token from it
+        if (view == null) {
+            view = new View(activity);
+        }
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+
     //update menu to reflect current activity options
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
@@ -119,7 +122,7 @@ public abstract class AbstractActivity extends AppCompatActivity {
                     }
                 });
                 View snackbarView = snackbar.getView();
-                TextView textView = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+                TextView textView = snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                 textView.setMaxLines(15);  // show multiple line
                 snackbar.setDuration(Snackbar.LENGTH_INDEFINITE);
                 snackbar.show();
@@ -170,6 +173,47 @@ public abstract class AbstractActivity extends AppCompatActivity {
     protected Snackbar getSnackbar(){
         return  Snackbar.make(findViewById(android.R.id.content), this.getResources().getString(snackBarMessageID), Snackbar.LENGTH_LONG);
     }
+
+
+    //A copy of ArrayAdapter. You just give it an array and it will do the rest of the work.
+    protected abstract class CommonAdapter<E> extends BaseAdapter
+    {
+        protected List<E> dataCopy = null;
+
+        //Keep a reference to the data:
+        public CommonAdapter(List<E> originalData)
+        {
+            dataCopy = originalData;
+        }
+
+        //You can give it an array
+        public CommonAdapter(E [] array)
+        {
+            dataCopy = Arrays.asList(array);
+        }
+
+
+        //Tells the list how many elements to display:
+        public int getCount()
+        {
+            return dataCopy.size();
+        }
+
+
+        public E getItem(int position){
+            return dataCopy.get(position);
+        }
+
+        public abstract View getView(int position, View old, ViewGroup parent);
+
+
+        //Return 0 for now. We will change this when using databases
+        public long getItemId(int position)
+        {
+            return  ((ListItem)getItem(position)).getId();
+        }
+    }
+
 
 
 }
