@@ -19,11 +19,15 @@
     <!-- Flight tracker Activity -->
     <string name="action_flight_tracker">Flight Tracker</string>
     <string name="flight_search_hint">Enter Airport Code</string>
-    <string name="flight_tracker_about">Flight Tracker data provided by \n Aviation-edge.com \n</string>
-    <string name="flight_tracker_help">Flight Tracker version 1.0 \n Developed by: Lena Kazantseva\n\n
-           To list currnet flights from an airport, enter Airport Code and Click Search; \n\n
-           Scroll and select desired flight. Click on the Flight recoder to get more details about the flight.\n\n
-           Click on reset to clear all flights</string>
+    <string name="flight_tracker_about">Flight Tracker data provided by \n Aviation-edge.com\n</string>
+    <string name="flight_tracker_help">Flight Tracker version <u>1.0</u>
+        \nDeveloped by: <b>Lena Kazantseva</b>
+        \n\nTo list currnet flights from an airport, enter <i>Airport Code</i> and click <b>Search</b>;
+        \n\nExample: for Ottawa enter <b>YOW</b>, Toronto <b>YYZ</b>, Montreal <b>YUL</b>.
+        \n\nScroll and select desired Flight.
+        \nClick on the <i>Flight</i> to view more details.
+        \n\nYou can save flight for future reference, ore remove it from saved list.
+        \n\nClick on <b>Reset</b> to clear all flights</string>
 
 
 
