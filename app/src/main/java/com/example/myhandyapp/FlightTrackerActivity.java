@@ -160,12 +160,12 @@ public class FlightTrackerActivity extends CommonActivity {
         for (Flight flight : flightList ) {
             datasource.deleteFlight(flight.getId());
         }
-
-        flightList = datasource.getAllFlights();
         datasource.close();
 
+        flightList.clear();
         refreshListAdapter();
         Log.d("flightList Size :" , String.valueOf(flightList.size()));
+
         //clear shared preffs object
         removeSharedPreference(AIRPORT_CODE);
 
@@ -207,7 +207,7 @@ public class FlightTrackerActivity extends CommonActivity {
             {
                 long id = data.getLongExtra(ITEM_ID, 0);
                 int position = data.getIntExtra(ITEM_POSITION, 0);
-                deleteMessageId((long)id, position);
+                deleteMessageId(id, position);
             }
         }
     }
@@ -225,7 +225,7 @@ public class FlightTrackerActivity extends CommonActivity {
     protected class MyArrayAdapter<E> extends CommonAdapter<E>
     {
 
-        public MyArrayAdapter(List<E> originalData) {
+        private MyArrayAdapter(List<E> originalData) {
             super(originalData);
         }
 
@@ -253,7 +253,7 @@ public class FlightTrackerActivity extends CommonActivity {
     }
 
     // a subclass of AsyncTask                  Type1    Type2    Type3
-    private class FlightQuery extends AsyncTask<String, Integer, String>
+    private class  FlightQuery extends AsyncTask<String, Integer, String>
     {
         @Override
         protected String doInBackground(String ... params) {
