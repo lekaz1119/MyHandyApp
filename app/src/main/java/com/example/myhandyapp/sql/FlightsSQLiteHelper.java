@@ -11,17 +11,27 @@ public class FlightsSQLiteHelper extends SQLiteOpenHelper {
 
     public static final String TABLE_FLIGHTS = "flights";
     public static final String COLUMN_ID = "_id";
-    public static final String COLUMN_MESSAGE = "message";
-    public static final String COLUMN_MESSAGE_SOURCE = "source";
+    public static final String COLUMN_AIRPORT_FROM = "airport_from";
+    public static final String COLUMN_AIRPORT_TO = "airport_to";
+    public static final String COLUMN_FLIGHT = "flight";
+    public static final String COLUMN_FLIGHT_LOCATION = "flight_location";
+    public static final String COLUMN_FLIGHT_SPEED = "flight_speed";
+    public static final String COLUMN_FLIGHT_ALTITUDE = "flight_altitude";
+    public static final String COLUMN_FLIGHT_STATUS = "flight_status";
 
     private static final String DATABASE_NAME = "flights.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 1; //change id to drop existing the database
 
     // Database creation sql statement
     private static final String DATABASE_CREATE = "create table "
             + TABLE_FLIGHTS + "( " + COLUMN_ID  + " integer primary key autoincrement, "
-            + COLUMN_MESSAGE_SOURCE + " text not null, "
-            + COLUMN_MESSAGE + " text not null);";
+            + COLUMN_AIRPORT_FROM + " text not null, "
+            + COLUMN_AIRPORT_TO + " text not null, "
+            + COLUMN_FLIGHT + " text not null, "
+            + COLUMN_FLIGHT_LOCATION + " text not null, "
+            + COLUMN_FLIGHT_SPEED + " text not null, "
+            + COLUMN_FLIGHT_ALTITUDE + " text not null, "
+            + COLUMN_FLIGHT_STATUS + " text not null);";
 
     public FlightsSQLiteHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);

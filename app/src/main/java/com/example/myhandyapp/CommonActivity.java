@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.BaseAdapter;
+import android.widget.ListAdapter;
 import android.widget.TextView;
 
 import com.example.myhandyapp.listitems.ListItem;
@@ -26,7 +27,6 @@ import java.util.List;
 
 public abstract class CommonActivity extends AppCompatActivity {
     SharedPreferences sp;
-
     private int snackBarMessageID;
     private int dialogID;
     @Override
@@ -174,6 +174,19 @@ public abstract class CommonActivity extends AppCompatActivity {
         return  Snackbar.make(findViewById(android.R.id.content), this.getResources().getString(snackBarMessageID), Snackbar.LENGTH_LONG);
     }
 
+    //clear shared prefs object
+    protected void removeSharedPreference(String code){
+        SharedPreferences.Editor editor = sp.edit();
+        editor.remove(code);
+        editor.apply();
+    }
+
+    //add to shared prefs object
+    protected void saveSharedPreference(String code, String value){
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putString(code, value);
+        editor.apply();
+    }
 
     //A copy of ArrayAdapter. You just give it an array and it will do the rest of the work.
     protected abstract class CommonAdapter<E> extends BaseAdapter
@@ -192,22 +205,20 @@ public abstract class CommonActivity extends AppCompatActivity {
             dataCopy = Arrays.asList(array);
         }
 
-
         //Tells the list how many elements to display:
         public int getCount()
         {
             return dataCopy.size();
         }
 
-
         public E getItem(int position){
             return dataCopy.get(position);
         }
 
+        //you need to implement this method individually, based on your list item
         public abstract View getView(int position, View old, ViewGroup parent);
 
-
-        //Return 0 for now. We will change this when using databases
+        //Return DB id
         public long getItemId(int position)
         {
             return  ((ListItem)getItem(position)).getId();

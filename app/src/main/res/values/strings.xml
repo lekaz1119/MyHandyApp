@@ -10,11 +10,14 @@
     <string name="main_help">My Handy App contains 4 mini apps.\n 1.New York Times Article Search,\n 2.News Feed,\n
          3.Merriam Webster Dictionary and\n 4.Flight Status tracker\n\nClick on one of the buttons to go the desired service.
     </string>
+    <string name="reset_toast">All data is Cleared!\n</string>
+    <string name="data_loaded_toast">New data has been loaded!\n</string>
     <string name="txt_search">Search</string>
     <string name="txt_reset">Reset</string>
     <string name="ok">OK</string>
     <string name="go_back">Go back?</string>
     <string name="cancel">Cancel</string>
+    <string name="Delete">Delete</string>
 
     <!-- Flight tracker Activity -->
     <string name="action_flight_tracker">Flight Tracker</string>
@@ -28,7 +31,10 @@
         \nClick on the <i>Flight</i> to view more details.
         \n\nYou can save flight for future reference, ore remove it from saved list.
         \n\nClick on <b>Reset</b> to clear all flights</string>
-
+    <string name="gps">GPS: </string>
+    <string name="speed">speed: </string>
+    <string name="altitude">altitude :</string>
+    <string name="status">status: </string>
 
 
     <!-- New York Times Article Search Activity -->

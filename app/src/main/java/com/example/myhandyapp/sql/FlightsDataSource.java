@@ -8,6 +8,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.example.myhandyapp.listitems.Flight;
 
@@ -18,8 +19,14 @@ public class FlightsDataSource {
     private FlightsSQLiteHelper dbHelper;
     private String[] allColumns = {
             FlightsSQLiteHelper.COLUMN_ID,
-            FlightsSQLiteHelper.COLUMN_MESSAGE_SOURCE,
-            FlightsSQLiteHelper.COLUMN_MESSAGE};
+            FlightsSQLiteHelper.COLUMN_AIRPORT_FROM,
+            FlightsSQLiteHelper.COLUMN_AIRPORT_TO,
+            FlightsSQLiteHelper.COLUMN_FLIGHT,
+            FlightsSQLiteHelper.COLUMN_FLIGHT_LOCATION,
+            FlightsSQLiteHelper.COLUMN_FLIGHT_SPEED,
+            FlightsSQLiteHelper.COLUMN_FLIGHT_ALTITUDE,
+            FlightsSQLiteHelper.COLUMN_FLIGHT_STATUS
+    };
 
     public FlightsDataSource(Context context) {
         dbHelper = new FlightsSQLiteHelper(context);
@@ -33,10 +40,18 @@ public class FlightsDataSource {
         dbHelper.close();
     }
 
-    public Flight createFlight(String message_source, String message) {
+    //create flight record in database and get it's DB id.
+    //retrieve the DB flight record, crete new FlightObject, add ID to it and return for further processing.
+    public Flight createFlight(String airportFrom, String airportTo, String flight,
+                                String location, String speed, String altitude, String status) {
         ContentValues values = new ContentValues();
-        values.put(FlightsSQLiteHelper.COLUMN_MESSAGE_SOURCE, message_source);
-        values.put(FlightsSQLiteHelper.COLUMN_MESSAGE, message);
+        values.put(FlightsSQLiteHelper.COLUMN_AIRPORT_FROM, airportFrom);
+        values.put(FlightsSQLiteHelper.COLUMN_AIRPORT_TO, airportTo);
+        values.put(FlightsSQLiteHelper.COLUMN_FLIGHT, flight);
+        values.put(FlightsSQLiteHelper.COLUMN_FLIGHT_LOCATION, location);
+        values.put(FlightsSQLiteHelper.COLUMN_FLIGHT_SPEED, speed);
+        values.put(FlightsSQLiteHelper.COLUMN_FLIGHT_ALTITUDE, altitude);
+        values.put(FlightsSQLiteHelper.COLUMN_FLIGHT_STATUS, status);
         long insertId = database.insert(FlightsSQLiteHelper.TABLE_FLIGHTS, null, values);
         Cursor cursor = database.query(FlightsSQLiteHelper.TABLE_FLIGHTS,
                 allColumns, FlightsSQLiteHelper.COLUMN_ID + " = " + insertId, null,
@@ -47,9 +62,8 @@ public class FlightsDataSource {
         return newFlight;
     }
 
-    public void deleteFlight(Flight flight) {
-        long id = flight.getId();
-        System.out.println(FlightsSQLiteHelper.TABLE_FLIGHTS + " deleted with id: " + id);
+    public void deleteFlight(long id ) {
+        Log.d(FlightsSQLiteHelper.TABLE_FLIGHTS, " deleted with id: " + id);
         database.delete(FlightsSQLiteHelper.TABLE_FLIGHTS, FlightsSQLiteHelper.COLUMN_ID
                 + " = " + id, null);
     }
@@ -72,11 +86,19 @@ public class FlightsDataSource {
         return flights;
     }
 
+
+    //add DB is to the flight object
     private Flight cursorToFlight(Cursor cursor) {
         Flight flight = new Flight();
         flight.setId(cursor.getLong(0));
-        flight.setAirport(cursor.getString(1));
-        flight.setAirline(cursor.getString(2));
+        flight.setAirportFrom(cursor.getString(1));
+        flight.setAirportTo(cursor.getString(2));
+        flight.setFlight(cursor.getString(3));
+        flight.setLocation(cursor.getString(4));
+        flight.setSpeed(cursor.getString(5));
+        flight.setAltitude(cursor.getString(6));
+        flight.setStatus(cursor.getString(7));
+
         return flight;
     }
 

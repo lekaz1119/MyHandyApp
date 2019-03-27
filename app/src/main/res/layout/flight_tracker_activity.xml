@@ -13,7 +13,7 @@
         android:layout_above="@id/controlsLayout">
 
         <ListView
-            android:id="@+id/message_list"
+            android:id="@+id/flight_list"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:stackFromBottom="true"

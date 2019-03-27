@@ -5,32 +5,70 @@ package com.example.myhandyapp.listitems;
 public class Flight extends ListItem {
 
     private long id;
-    private String airline;
-    private String airport;
+    private String airportFrom;
+    private String airportTo;
+    private String location;
+    private String flight;
+    private String speed;
+    private String altitude;
+    private String status;
 
-    public Flight() {
+    public Flight() { }
 
+    public String getAirportFrom() {
+        return airportFrom;
     }
 
-    public Flight(String airport, String airline) {
-        this.airport=airport;
-        this.airline=airline;
+    public void setAirportFrom(String airportFrom) {
+        this.airportFrom = airportFrom;
     }
 
-    public String getAirline() {
-        return airline;
+    public String getAirportTo() {
+        return airportTo;
     }
 
-    public String getAirport() {
-        return airport;
+    public void setAirportTo(String airportTo) {
+        this.airportTo = airportTo;
     }
 
-    public void setAirline(String airline) {
-        this.airline = airline;
+    public String getLocation() {
+        return location;
     }
 
-    public void setAirport(String airport) {
-        this.airport = airport;
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getFlight() {
+        return flight;
+    }
+
+    public void setFlight(String flight) {
+        this.flight = flight;
+    }
+
+    public String getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(String speed) {
+        this.speed = speed;
+    }
+
+    public String getAltitude() {
+        return altitude;
+    }
+
+    public void setAltitude(String altitude) {
+        this.altitude = altitude;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public long getId() {
