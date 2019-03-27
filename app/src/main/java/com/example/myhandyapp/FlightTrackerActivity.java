@@ -155,15 +155,17 @@ public class FlightTrackerActivity extends CommonActivity {
         txtAirportCode.setText("");
         datasource = new FlightsDataSource(this);
         datasource.open();
-        flightList = datasource.getAllFlights();
+
         //delete all flights from DB
         for (Flight flight : flightList ) {
             datasource.deleteFlight(flight.getId());
         }
+
+        flightList = datasource.getAllFlights();
         datasource.close();
 
         refreshListAdapter();
-
+        Log.d("flightList Size :" , String.valueOf(flightList.size()));
         //clear shared preffs object
         removeSharedPreference(AIRPORT_CODE);
 
@@ -194,7 +196,6 @@ public class FlightTrackerActivity extends CommonActivity {
 
         }
         Log.d("you clicked on :" , "Button search");
-        Toast.makeText(getApplicationContext(), getResources().getString(R.string.data_loaded_toast), Toast.LENGTH_SHORT).show();
     }
 
     //This function only gets called on the phone. The tablet never goes to a new activity
@@ -216,7 +217,7 @@ public class FlightTrackerActivity extends CommonActivity {
         Log.d("Deleting ID :" , " id="+ id + " at position= "+position);
         datasource.deleteFlight(id);
         flightList.remove(position);
-        //Log.d("flightList Size :" , String.valueOf(flightList.size()));
+        Log.d("flightList Size :" , String.valueOf(flightList.size()));
         refreshListAdapter();
     }
 
@@ -371,6 +372,10 @@ public class FlightTrackerActivity extends CommonActivity {
         protected void onPostExecute(String s) {
             progressBar.setVisibility(View.INVISIBLE);
             refreshListAdapter();
+            if(flightList.size() > 0)
+                Toast.makeText(getApplicationContext(), getResources().getString(R.string.data_loaded_toast), Toast.LENGTH_SHORT).show();
+            else
+                Toast.makeText(getApplicationContext(), getResources().getString(R.string.no_data_found_toast), Toast.LENGTH_LONG).show();
         }
 
         private void pause(){

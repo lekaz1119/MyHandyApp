@@ -20,6 +20,7 @@
     <string name="Delete">Delete</string>
 
     <!-- Flight tracker Activity -->
+    <string name="no_data_found_toast">No Data Found, Check Airport Code\n</string>
     <string name="action_flight_tracker">Flight Tracker</string>
     <string name="flight_search_hint">Enter Airport Code</string>
     <string name="flight_tracker_about">Flight Tracker data provided by \n Aviation-edge.com\n</string>
