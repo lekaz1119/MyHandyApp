@@ -47,7 +47,14 @@
     <!-- News Feed -->
     <string name="action_news">News Feed</string>
     <string name="news_about">New data provided by \n webhose.io \n</string>
-    <string name="news_help">News  help ... \n\n change as you need!!!!!!!1 </string>
+    <string name="news_help">News Feed
+    \nDeveloped by: <b>Ruth Anne Sebastina</b>
+        \n\nTo list news articles, enter <i>headlines</i> and click <b>Search</b>;
+        \n\nExample: for latest global news <b>global news </b>.
+        \n\nScroll and select desired news article.
+        \nClick on the <i>News</i> to view more details.
+        \n\nYou can save article for future reference, or remove it from saved list.
+        \n\nClick on <b>Reset</b> to clear all flights</string>
 
 
     <!-- Merriam Webster Dictionary -->
