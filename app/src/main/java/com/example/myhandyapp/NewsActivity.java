@@ -23,6 +23,7 @@ import com.example.myhandyapp.sql.NewsDataSource;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -45,19 +46,25 @@ public class NewsActivity extends CommonActivity {
 
     private static final String NEWS_CODE = "NewsCode";
     public static final int EMPTY_ACTIVITY = 345;
-    private static final String NEWS_TITLE = "NewsTitle";
+    public static final String NEWS_TITLE = "NewsTitle";
     public static final String NEWS_AUTHOR = "AUTHOR";
     public static final String NEWS_ARTICLE = "ARTICLE";
-    public static final String NEWS_URL= "LINK";
+    public static final String NEWS_URL= "Link: ";
     public static final String NEWS_ID= "ID";
     public static final String NEWS_POSITION = "POSITION";
+    public static final String API_TOKEN = "c2883701-aeb3-434c-b385-bccdefa5c806&";
+    public static final String API_FORMAT = "format=json&";
+    public static final String API_SEARCH = "sort=crawled&q=";
+
+
+
+
 
 
 
     String newsCode;
-    private String serviceURL="https://webhose.io";
+    private String serviceURL="http://webhose.io/filterWebContent?token="+ API_TOKEN + API_FORMAT +API_SEARCH;
     private static final int pause = 1800;
-
     EditText searchArticle;
     Button btnReset,btnSearch;
 
@@ -68,6 +75,7 @@ public class NewsActivity extends CommonActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.news_activity);
+        Log.d("url",serviceURL);
 
         boolean isTablet = findViewById(R.id.fragmentLocation) != null;
 
@@ -163,8 +171,10 @@ public class NewsActivity extends CommonActivity {
     }
 
     private void dispatchSearchAction() {
-        newsCode= searchArticle.getText().toString();
-        if (airportCode.length() > 0) {
+        newsCode= searchArticle.getText().toString().trim();
+        //newsCode.trim();
+        Log.d("code",newsCode);
+        if (newsCode.length() > 0) {
             progressBar.setVisibility(View.VISIBLE);
             progressBar.setProgress(0);
             progressBar.setMax(100);
@@ -174,7 +184,9 @@ public class NewsActivity extends CommonActivity {
             //save to shared prefs
             saveSharedPreference(NEWS_CODE, newsCode);
 
-            String serverUrl = serviceURL  + airportCode; ///?? need to look at the website
+            String serverUrl = serviceURL  + newsCode; ///?? need to look at the website
+            Log.d("url",serverUrl);
+
 
             NewsQuery networkThread = new NewsQuery();
 
@@ -224,13 +236,12 @@ public class NewsActivity extends CommonActivity {
 
             LayoutInflater inflater = getLayoutInflater();
 
-            News flight = (News) this.getItem(position);
-            String newsToShow = flight.getNews();
-            newsToShow +="   [ " + flight.getTitle() + "  \n Author:  " + flight.getAuthor() + "";
+            News news = (News) this.getItem(position);
+            String newsToShow ="  " + news.getTitle() + "  \n Author:  " + news.getAuthor() + "";
 
             View root = inflater.inflate(R.layout.news_item, parent, false);
 
-            TextView rowText = root.findViewById(R.id.textOnRow);
+            TextView rowText = root.findViewById(R.id.newsTitle);
             rowText.setText( newsToShow );
 
             ImageButton btnNews = root.findViewById(R.id.btnNews);
@@ -270,10 +281,13 @@ public class NewsActivity extends CommonActivity {
                 urlConnection.disconnect();
                 publishProgress(progress); //tell android to call onProgressUpdate with 3 as parameter
 
-                JSONArray jsonArray = new JSONArray(result);
+                JSONObject json = new JSONObject(result);
+
+                JSONArray jsonArray = json.getJSONArray("posts");
+                Log.d("jsonArray arrive size:", String.valueOf(jsonArray.length()));
 
                 if(jsonArray != null) {
-                  //  processJsonArray(jsonArray);
+                    processJsonArray(jsonArray);
                 }
 
 
@@ -285,6 +299,53 @@ public class NewsActivity extends CommonActivity {
 
 
             return "Finished Task";
+        }
+
+        private void processJsonArray (JSONArray jsonArray) throws JSONException {
+            JSONObject jObject;
+            String latLon;
+
+            for (int i=0; i < jsonArray.length(); i++) {
+                jObject = jsonArray.getJSONObject(i);
+                Log.d("jObject :", jObject.toString(1));
+
+
+                News news = datasource.createNewsArticle(
+                        jObject.getString("title"),
+                        jObject.getString("author"),
+                        jObject.getString("text"),
+
+                        jObject.getString("url"));
+
+                newsList.add(news);
+                publishProgress(progress++);
+
+            }
+        }
+
+        @Override
+        protected void onProgressUpdate(Integer... values) {
+            progressBar.setProgress(values[0]);
+            Log.d("AsyncTaskExample", "update progress bar:" + values[0]);
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            progressBar.setVisibility(View.INVISIBLE);
+            refreshListAdapter();
+            if(newsList.size() > 0)
+                Toast.makeText(getApplicationContext(), getResources().getString(R.string.data_loaded_toast), Toast.LENGTH_SHORT).show();
+            else
+                Toast.makeText(getApplicationContext(), getResources().getString(R.string.no_news_found_toast), Toast.LENGTH_LONG).show();
+        }
+
+        private void pause(){
+            try {
+                Log.d("Sleeping ", String.valueOf(pause));
+                Thread.sleep(pause); //pause for # of milliseconds to watch the progress bar update
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
         }
 

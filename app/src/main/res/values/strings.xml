@@ -48,13 +48,19 @@
     <string name="action_news">News Feed</string>
     <string name="news_about">New data provided by \n webhose.io \n</string>
     <string name="news_help">News Feed
-    \nDeveloped by: <b>Ruth Anne Sebastina</b>
+    \nDeveloped by: <b>Ruth Anne Sebastian</b>
         \n\nTo list news articles, enter <i>headlines</i> and click <b>Search</b>;
         \n\nExample: for latest global news <b>global news </b>.
         \n\nScroll and select desired news article.
-        \nClick on the <i>News</i> to view more details.
-        \n\nYou can save article for future reference, or remove it from saved list.
-        \n\nClick on <b>Reset</b> to clear all flights</string>
+        \nClick on the <i>News item </i> to view more details.
+        \n\n You will have the option to delete the article from the list that you currently see
+        \n\nPrevious searched news list will be automatically shown when you open the app
+        \n\n to clear the history click the <b>reset</b> button
+        </string>
+    <string name="save">Save</string>
+    <string name="news_search_hint">Enter News title</string>
+    <string name="no_news_found_toast">No Data Found, Check News Title\n</string>
+
 
 
     <!-- Merriam Webster Dictionary -->
