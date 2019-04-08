@@ -42,7 +42,8 @@
     <string name="action_nyt">New York Times</string>
     <string name="nyt_about">Data provided by \n New York Times website \n</string>
     <string name="nyt_help">NYT  help ... \n\n change as you need</string>
-    <string name="tara">Tara </string>
+    <string name="nyt_search_hint"> Type The Title </string>
+    <string name="txt_search_NYT"> Search Your Title </string>
 
     <!-- News Feed -->
     <string name="action_news">News Feed</string>

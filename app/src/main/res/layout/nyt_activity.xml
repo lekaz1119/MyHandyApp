@@ -4,10 +4,62 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/refresher"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="hello NYT"/>
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_above="@id/controlsLayout">
+
+        <ListView
+            android:id="@+id/flight_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:stackFromBottom="true"
+            android:transcriptMode="alwaysScroll"/>
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+
+    <LinearLayout
+        android:id="@+id/controlsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1.0"
+        android:layout_alignParentBottom="true"
+        android:layout_alignEnd="@+id/refresher">
+        <Button
+            android:id="@+id/btnReset"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight=".4"
+            android:text="@string/txt_reset"
+            android:layout_gravity="start"
+            android:textSize="12sp"/>
+
+        <EditText
+            android:id="@+id/txtNYTCode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight=".2"
+            android:hint="@string/nyt_search_hint"
+            android:inputType="textCapCharacters"
+            android:autofillHints="@string/txt_search_NYT"/>
+
+        <Button
+            android:id="@+id/btnSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight=".4"
+            android:text="@string/txt_search"
+            android:layout_gravity="end"
+            android:textSize="12sp"/>
+
+    </LinearLayout>
+    <ProgressBar
+        android:id="@+id/flightProgressBar"
+        style="@style/customProgressBar" />
 </RelativeLayout>
+
