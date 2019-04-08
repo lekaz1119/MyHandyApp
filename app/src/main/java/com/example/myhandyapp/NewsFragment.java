@@ -2,6 +2,7 @@ package com.example.myhandyapp;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -16,7 +17,25 @@ public class NewsFragment extends Fragment {
     private Bundle dataFromActivity;
     private long id;
 
+    /**
+     * method to set if the fragment loaded is on the tablet or phone
+     * @param tablet
+     */
     public void setTablet(boolean tablet) { isTablet = tablet; }
+
+    /**
+     *
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     *
+     * loads the fragment layout
+     * shows the item information
+     * if the user clicks the delete button,
+     * the delete method from NewActivity is called
+     *
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -43,17 +62,19 @@ public class NewsFragment extends Fragment {
 
         newsAuthor.setText(lbl+dataFromActivity.getString(NewsActivity.NEWS_AUTHOR));
 
-        TextView location = (TextView)result.findViewById(R.id.url);
-        location.setText(NewsActivity.NEWS_URL + dataFromActivity.getString(NewsActivity.NEWS_URL));
+        TextView url = (TextView)result.findViewById(R.id.url);
+        String hyperLink= NewsActivity.NEWS_URL + dataFromActivity.getString(NewsActivity.NEWS_URL);
+        url.setText(hyperLink);
+
+        url.setOnClickListener(click->{
+            Intent browser= new Intent(Intent.ACTION_VIEW);
+            browser.setData(Uri.parse(hyperLink));
+            startActivity(browser);
+        });
 
         //show the AIRPORT_TO
         TextView airportTo = (TextView)result.findViewById(R.id.article);
         airportTo.setText(dataFromActivity.getString(NewsActivity.NEWS_ARTICLE));
-
-
-
-
-
 
         // get the delete button, and add a click listener:
         Button deleteButton = (Button)result.findViewById(R.id.deleteButton);
@@ -76,14 +97,12 @@ public class NewsFragment extends Fragment {
                 Intent backToChatRoomActivity = new Intent();
                 backToChatRoomActivity.putExtra(NewsActivity.NEWS_ID, dataFromActivity.getLong(NewsActivity.NEWS_ID ));
                 backToChatRoomActivity.putExtra(NewsActivity.NEWS_POSITION, dataFromActivity.getInt(NewsActivity.NEWS_POSITION ));
-                parent.setResult(Activity.RESULT_OK, backToChatRoomActivity); //send data back to FragmentExample in onActivityResult()
+                parent.setResult(Activity.RESULT_CANCELED, backToChatRoomActivity); //send data back to FragmentExample in onActivityResult()
                 parent.finish(); //go back
             }
         });
 
-        Button saveButton = (Button)result.findViewById(R.id.saveButton);
 
-        saveButton.setOnClickListener(click->{});
 
         return result;
     }
