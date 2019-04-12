@@ -39,6 +39,7 @@ public class FlightTrackerActivity extends CommonActivity {
     protected ListAdapter adt;
     private FlightsDataSource datasource;
     private  int progress=0;
+
     private static final String AIRPORT_CODE = "AirportCode";
     private static final String API_KEY = "6922c9-61988f";
     private static final String PARAM_DEPART = "&depIata=";
