@@ -9,6 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.myhandyapp.listitems.Flight;
+import com.example.myhandyapp.sql.FlightsDataSource;
 
 public class FlightTrackerFragment extends Fragment {
     private boolean isTablet;
@@ -63,9 +67,10 @@ public class FlightTrackerFragment extends Fragment {
         TextView status = (TextView)result.findViewById(R.id.status);
         status.setText(dataFromActivity.getString(FlightTrackerActivity.FLIGHT_STATUS));
 
+        Button saveButton = (Button)result.findViewById(R.id.saveButton);
+        Button deleteButton = (Button)result.findViewById(R.id.deleteButton);
 
         // get the delete button, and add a click listener:
-        Button deleteButton = (Button)result.findViewById(R.id.deleteButton);
         deleteButton.setOnClickListener( clk -> {
 
             if(isTablet) { //both the list and details are on the screen:
@@ -89,6 +94,35 @@ public class FlightTrackerFragment extends Fragment {
                 parent.finish(); //go back
             }
         });
+
+
+        // get the save button, and add a click listener:
+
+        saveButton.setOnClickListener( clk -> {
+            FlightsDataSource datasource;
+            datasource = new FlightsDataSource(getActivity().getApplicationContext());
+            datasource.open();
+
+            Flight flight = datasource.createFlight(
+                    dataFromActivity.getString(FlightTrackerActivity.AIRPORT_FROM),
+                    dataFromActivity.getString(FlightTrackerActivity.AIRPORT_TO),
+                    dataFromActivity.getString(FlightTrackerActivity.FLIGHT),
+                    dataFromActivity.getString(FlightTrackerActivity.FLIGHT_LOCATION),
+                    dataFromActivity.getString(FlightTrackerActivity.FLIGHT_SPEED),
+                    dataFromActivity.getString(FlightTrackerActivity.FLIGHT_ALTITUDE),
+                    dataFromActivity.getString(FlightTrackerActivity.FLIGHT_STATUS));
+            datasource.close();
+
+            Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R.string.data_saved_toast), Toast.LENGTH_SHORT).show();
+        });
+
+        if(id == 0) {
+            deleteButton.setVisibility(View.INVISIBLE);
+            saveButton.setVisibility(View.VISIBLE);
+        }else{
+            deleteButton.setVisibility(View.VISIBLE);
+            saveButton.setVisibility(View.INVISIBLE);
+        }
         return result;
     }
 }

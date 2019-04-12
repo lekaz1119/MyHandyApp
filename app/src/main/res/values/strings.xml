@@ -12,6 +12,7 @@
     </string>
     <string name="reset_toast">All data is Cleared!\n</string>
     <string name="data_loaded_toast">New data has been loaded!\n</string>
+    <string name="data_saved_toast">Flight has been saved!\n</string>
 
     <string name="txt_search">Search</string>
     <string name="txt_reset">Reset</string>
@@ -19,6 +20,8 @@
     <string name="go_back">Go back?</string>
     <string name="cancel">Cancel</string>
     <string name="Delete">Delete</string>
+    <string name="add">Add</string>
+    <string name="save">Save</string>
 
     <!-- Flight tracker Activity -->
     <string name="no_data_found_toast">No Data Found, Check Airport Code\n</string>

@@ -1,57 +1,61 @@
 <resources>
     <!-- Main Activity -->
     <string name="app_name">HandyApp</string>
-    <string name="action_main_help">Help</string>
-    <string name="action_help">Help</string>
-    <string name="action_about">About</string>
-    <string name="toast_about">Application version 1.0 \n Developers: \n
-        Lena Kazantseva, \n Tara Davoodnia, \n Ruth Anne Sebastian , \n Maxim Kasyanenko
+    <string name="action_main_help">Помощь</string>
+    <string name="action_help">Помощь</string>
+    <string name="action_about">Описание</string>
+    <string name="toast_about">Версия приложения 1.0 \n Разработчики: \n
+        Лена Казанцева, \n Тара Давудния, \n Рут Энн Себастьян , \n Максим Касьяненко
     </string>
-    <string name="main_help">My Handy App contains 4 mini apps.\n 1.New York Times Article Search,\n 2.News Feed,\n
-         3.Merriam Webster Dictionary and\n 4.Flight Status tracker\n\nClick on one of the buttons to go the desired service.
+    <string name="main_help">Моё Handy App приложение содержит 4 мини-приложения.\n 1.Нью-Йорк Таймс поиск статей,\n 2.Новости ,\n
+         3.Merriam Webster Словарь и\n 4.Отслеживание статуса полетов\n\nНажмите на одну из кнопок, чтобы перейти на нужный сервис.
     </string>
-    <string name="reset_toast">All data is Cleared!\n</string>
-    <string name="data_loaded_toast">New data has been loaded!\n</string>
-    <string name="txt_search">Search</string>
-    <string name="txt_reset">Reset</string>
-    <string name="ok">OK</string>
-    <string name="go_back">Go back?</string>
-    <string name="cancel">Cancel</string>
-    <string name="Delete">Delete</string>
+    <string name="reset_toast">Все данные очищены!\n</string>
+    <string name="data_loaded_toast">Новые данные были загружены!\n</string>
+    <string name="data_saved_toast">Рейс был сохранен!\n</string>
+
+    <string name="txt_search">Поиск</string>
+    <string name="txt_reset">Сброс</string>
+    <string name="ok">Хорошо</string>
+    <string name="go_back">Вернитесь?</string>
+    <string name="cancel">Oтменить</string>
+    <string name="Delete">Удалить</string>
+    <string name="add">Добавить</string>
+    <string name="save">Сохранить</string>
 
     <!-- Flight tracker Activity -->
-    <string name="no_data_found_toast">No Data Found, Check Airport Code\n</string>
+    <string name="no_data_found_toast">Данные не найдены, проверьте код аэропорта\n</string>
     <string name="action_flight_tracker">Flight Tracker</string>
-    <string name="flight_search_hint">Enter Airport Code</string>
-    <string name="flight_tracker_about">Flight Tracker data provided by \n Aviation-edge.com\n</string>
-    <string name="flight_tracker_help">Flight Tracker version <u>1.0</u>
-        \nDeveloped by: <b>Lena Kazantseva</b>
-        \n\nTo list currnet flights from an airport, enter <i>Airport Code</i> and click <b>Search</b>;
-        \n\nExample: for Ottawa enter <b>YOW</b>, Toronto <b>YYZ</b>, Montreal <b>YUL</b>.
-        \n\nScroll and select desired Flight.
-        \nClick on the <i>Flight</i> to view more details.
-        \n\nYou can save flight for future reference, ore remove it from saved list.
-        \n\nClick on <b>Reset</b> to clear all flights</string>
+    <string name="flight_search_hint">Введите код аэропорта</string>
+    <string name="flight_tracker_about">Данные Flight Tracker предоставлены \n Aviation-edge.com\n</string>
+    <string name="flight_tracker_help">Версия Flight Tracker <u>1.0</u>
+        \nРазработан: <b>Леной Казанцевой</b>
+        \n\nЧтобы просмотреть список рейсов из аэропорта, введите <i>Код аэропорта</i> и нажмите <b>Поиск</b>;
+        \n\nПример: для Оттавы введите <b>YOW</b>, Торонто <b>YYZ</b>, Монреаль <b>YUL</b>.
+        \n\nПрокрутите и выберите нужный рейс.
+        \nНажми на <i>Рейс</i> для просмотра более подробной информации.
+        \n\nВы можете сохранить рейс для дальнейшего использования или удалить его из сохраненного списка.
+        \n\nНажмите на <b>Сброс</b> очистить все рейсы</string>
     <string name="gps">GPS</string>
-    <string name="speed">speed</string>
-    <string name="altitude">altitude</string>
-    <string name="status">status</string>
+    <string name="speed">скорость</string>
+    <string name="altitude">высота над уровнем моря</string>
+    <string name="status">статус</string>
 
 
     <!-- New York Times Article Search Activity -->
-    <string name="action_nyt">New York Times</string>
-    <string name="nyt_about">Data provided by \n New York Times website \n</string>
-    <string name="nyt_help">NYT  help ... \n\n change as you need</string>
+    <string name="action_nyt">Нью Йорк Таймс</string>
+    <string name="nyt_about">Данные предоставлены \n Нью Йорк Таймс веб-сайтом \n</string>
+    <string name="nyt_help">НЙТ помощь ... \n\n изменить как вам нужно</string>
 
     <!-- News Feed -->
     <string name="action_news">News Feed</string>
-    <string name="news_about">New data provided by \n webhose.io \n</string>
-    <string name="news_help">News  help ... \n\n change as you need </string>
+    <string name="news_about">Данные новостей представлены \n webhose.io \n</string>
+    <string name="news_help">Новости  помощь ... \n\n изменить как вам нужно </string>
 
     <!-- Merriam Webster Dictionary -->
     <string name="action_dictionary">Merriam Webster Dictionary</string>
-    <string name="dictionary_about">Data provided by Merriam Webster Dictionary\n www.dictionaryapi.com  \n</string>
-    <string name="dictionary_help">Dictinary help ... \n\n change as you need </string>
+    <string name="dictionary_about">Данные предоставлены Merriam Webster Dictionary\n www.dictionaryapi.com  \n</string>
+    <string name="dictionary_help">Словарь помощь ... \n\n изменить как вам нужно </string>
     <string name="avatar">avatar</string>
 
 </resources>
