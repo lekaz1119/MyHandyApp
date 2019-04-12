@@ -4,7 +4,13 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 public class NewsEmptyActivity extends AppCompatActivity {
-
+    /**
+     *
+     * @param savedInstanceState
+     * activity to load for a phone when a user clicks on a list item
+     * loads the frame layout
+     * sends information to newsFragment
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -12,7 +18,7 @@ public class NewsEmptyActivity extends AppCompatActivity {
 
         Bundle dataToPass = getIntent().getExtras(); //get the data that was passed from FragmentExample
 
-        //This is copied directly from FragmentExample.java lines 47-54
+
         NewsFragment dFragment = new NewsFragment();
         dFragment.setArguments( dataToPass ); //pass data to the the fragment
         dFragment.setTablet(false); //tell the Fragment that it's on a phone.

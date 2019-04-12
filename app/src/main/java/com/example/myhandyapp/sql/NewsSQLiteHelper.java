@@ -7,6 +7,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+/**
+ * class that extends SQLiteOpenHelper and has the methods to add or remove data from the database
+ */
 public class NewsSQLiteHelper extends SQLiteOpenHelper {
 
     public static final String TABLE_NEWS = "news";
@@ -17,7 +20,7 @@ public class NewsSQLiteHelper extends SQLiteOpenHelper {
     public static final String COLUMN_NEWS_URL = "news_url";
 
     private static final String DATABASE_NAME = "news.db";
-    private static final int DATABASE_VERSION = 2; //change id to drop existing the database
+    private static final int DATABASE_VERSION = 1; //change id to drop existing the database
 
 
     private static final String DATABASE_CREATE = "create table "
@@ -27,17 +30,31 @@ public class NewsSQLiteHelper extends SQLiteOpenHelper {
             + COLUMN_NEWS_URL + " text not null, "
             + COLUMN_NEWS_ARTICLE + " text not null);";
 
+    /**
+     * constructor
+     * @param context
+     */
     public NewsSQLiteHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
+    /**
+     * method that  creates the table
+     * @param database
+     */
     @Override
     public void onCreate(SQLiteDatabase database) {
-        //database.execSQL("DROP TABLE IF EXISTS " + TABLE_NEWS);
 
         database.execSQL(DATABASE_CREATE);
     }
 
+    /**
+     * method that makes changes to the database if the database version is greater that the one
+     * stored
+     * @param db
+     * @param oldVersion
+     * @param newVersion
+     */
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         Log.w(NewsSQLiteHelper.class.getName(),
@@ -47,6 +64,13 @@ public class NewsSQLiteHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    /**
+     * method that makes changes to the database if the database version is smaller that the one
+     * that is stored
+     * @param db
+     * @param oldVersion
+     * @param newVersion
+     */
     @Override
     public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         Log.w(NewsSQLiteHelper.class.getName(),
@@ -56,6 +80,10 @@ public class NewsSQLiteHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    /**
+     * prints the values from the cursor to LogCat
+     * @param c
+     */
     public static void printCursor(Cursor c){
         Log.d(NewsSQLiteHelper.class.getName()," Cursor information:");
         Log.d("Database Version: ",String.valueOf(DATABASE_VERSION));

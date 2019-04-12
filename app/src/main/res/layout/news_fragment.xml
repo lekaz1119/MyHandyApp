@@ -52,7 +52,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Url:"
-            android:layout_below="@+id/author"/>
+            android:autoLink="web"
+            android:layout_below="@+id/author"
+            android:textColor="@color/colorPrimary"/>
 
 
 <ScrollView
@@ -77,8 +79,8 @@
             android:id="@+id/saveButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="@string/Save" />
 
-            android:text="@string/save" />
     </LinearLayout>
     </ScrollView>
 

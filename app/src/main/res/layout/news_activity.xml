@@ -28,7 +28,7 @@ android:orientation="vertical">
     android:orientation="horizontal"
     android:weightSum="1.0"
     android:layout_alignParentBottom="true"
-    android:layout_alignEnd="@+id/refresher">
+    android:layout_alignEnd="@+id/refresh">
     <Button
         android:id="@+id/btnReset"
         android:layout_width="match_parent"

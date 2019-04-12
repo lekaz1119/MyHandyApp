@@ -5,8 +5,13 @@ public class News extends ListItem {
     private long id;
     private String title,author,article,url;
 
-
-
+    public News(){}
+    public News(String title,String author,String article,String url){
+        setUrl(url);
+        setNewsArticle(article);
+        setAuthor(author);
+        setTitle(title);
+    }
     public void setId(long id){this.id=id;}
 
     public long getId() {

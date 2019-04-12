@@ -62,23 +62,27 @@ public class NewsFragment extends Fragment {
 
         newsAuthor.setText(lbl+dataFromActivity.getString(NewsActivity.NEWS_AUTHOR));
 
+        //to show the url
         TextView url = (TextView)result.findViewById(R.id.url);
         String hyperLink= NewsActivity.NEWS_URL + dataFromActivity.getString(NewsActivity.NEWS_URL);
         url.setText(hyperLink);
 
+        //opens the browser on clicking the link
         url.setOnClickListener(click->{
             Intent browser= new Intent(Intent.ACTION_VIEW);
             browser.setData(Uri.parse(hyperLink));
             startActivity(browser);
         });
 
-        //show the AIRPORT_TO
-        TextView airportTo = (TextView)result.findViewById(R.id.article);
-        airportTo.setText(dataFromActivity.getString(NewsActivity.NEWS_ARTICLE));
+        //show the
+        TextView newArticle = (TextView)result.findViewById(R.id.article);
+        newArticle.setText(dataFromActivity.getString(NewsActivity.NEWS_ARTICLE));
 
-        // get the delete button, and add a click listener:
+        // get the delete button
         Button deleteButton = (Button)result.findViewById(R.id.deleteButton);
+        //deletes the news article from the database
         deleteButton.setOnClickListener( clk -> {
+
 
             if(isTablet) { //both the list and details are on the screen:
                 NewsActivity parent = (NewsActivity) getActivity();
@@ -94,13 +98,48 @@ public class NewsFragment extends Fragment {
             else //You are only looking at the details, you need to go back to the previous list page
             {
                 NewsEmptyActivity parent = (NewsEmptyActivity) getActivity();
-                Intent backToChatRoomActivity = new Intent();
-                backToChatRoomActivity.putExtra(NewsActivity.NEWS_ID, dataFromActivity.getLong(NewsActivity.NEWS_ID ));
-                backToChatRoomActivity.putExtra(NewsActivity.NEWS_POSITION, dataFromActivity.getInt(NewsActivity.NEWS_POSITION ));
-                parent.setResult(Activity.RESULT_CANCELED, backToChatRoomActivity); //send data back to FragmentExample in onActivityResult()
+                Intent backToNewsActivity = new Intent();
+                backToNewsActivity.putExtra(NewsActivity.NEWS_ID, dataFromActivity.getLong(NewsActivity.NEWS_ID ));
+                backToNewsActivity.putExtra(NewsActivity.NEWS_POSITION, dataFromActivity.getInt(NewsActivity.NEWS_POSITION ));
+                parent.setResult(Activity.RESULT_CANCELED, backToNewsActivity); //send data back to FragmentExample in onActivityResult()
                 parent.finish(); //go back
             }
         });
+
+        Button saveButton = (Button)result.findViewById(R.id.saveButton);
+
+        //save the article in the database
+        saveButton.setOnClickListener( clk -> {
+
+            if(isTablet) { //both the list and details are on the screen:
+                NewsActivity parent = (NewsActivity) getActivity();
+
+                //this deletes the item and updates the list
+                parent.saveMessageId(dataFromActivity.getString(NewsActivity.NEWS_TITLE ),
+                        dataFromActivity.getString(NewsActivity.NEWS_AUTHOR ),dataFromActivity.getString(NewsActivity.NEWS_ARTICLE ),
+                        dataFromActivity.getString(NewsActivity.NEWS_URL ));
+
+                //now remove the fragment:
+                // this is the object to be removed, so remove(this):
+                parent.getSupportFragmentManager().beginTransaction().remove(this).commit();
+            }
+            //for Phone:
+            else //You are only looking at the details, you need to go back to the previous list page
+            {
+                NewsEmptyActivity parent = (NewsEmptyActivity) getActivity();
+                Intent backToNewsActivity = new Intent();
+                //sends each info that needs to be stored in the class database to the NewActivity which will call the save method
+
+                backToNewsActivity.putExtra(NewsActivity.NEWS_TITLE, dataFromActivity.getString(NewsActivity.NEWS_TITLE ));
+                backToNewsActivity.putExtra(NewsActivity.NEWS_AUTHOR, dataFromActivity.getString(NewsActivity.NEWS_AUTHOR ));
+                backToNewsActivity.putExtra(NewsActivity.NEWS_ARTICLE, dataFromActivity.getString(NewsActivity.NEWS_ARTICLE ));
+                backToNewsActivity.putExtra(NewsActivity.NEWS_URL, dataFromActivity.getString(NewsActivity.NEWS_URL ));
+
+                parent.setResult(Activity.RESULT_OK, backToNewsActivity); //send data back NewsActivity in onActivityResult()
+                parent.finish(); //go back
+            }
+        });
+
 
 
 
