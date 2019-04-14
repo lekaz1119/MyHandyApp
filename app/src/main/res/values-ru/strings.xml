@@ -45,13 +45,33 @@
     <!-- New York Times Article Search Activity -->
     <string name="action_nyt">Нью Йорк Таймс</string>
     <string name="nyt_about">Данные предоставлены \n Нью Йорк Таймс веб-сайтом \n</string>
-    <string name="nyt_help">НЙТ помощь ... \n\n изменить как вам нужно</string>
+    <string name="nyt_help">New York Times Article Search:
+        \n\n <b>Developed by Tara Davoodnia </b>
+        \n\n <b> Version 1</b>
+        \n\n <b>It shows a list of articles that match the search term.</b>
+        \n\n <b>It creates a list of titles that are retrieved in the results.</b>
+        \n\n <b>Clicking on a title loads the rest of the news article</b>
+    </string>
+    <string name="nyt_search_hint"> Type The Title </string>
+    <string name="txt_search_NYT"> Search Your Title </string>
+    <string name="txt_delete_NYT"> Delete</string>
+    <string name="txt_save_NYT"> Save</string>
+    <string name="nyt_articles_found_toast">Found new articles!\n</string>
+    <string name="nyt_articles_notfound_toast">Nothing found for your search!\n</string>
+    <string name="data_saved_NYT_toast">Article has been saved!\n</string>
+    <string name="nyt_article_url"> Link to original Article </string>
 
     <!-- News Feed -->
     <string name="action_news">News Feed</string>
     <string name="news_about">Данные новостей представлены \n webhose.io \n</string>
     <string name="news_help">Новости  помощь ... \n\n изменить как вам нужно </string>
+    <string name="news_search_hint">Enter News title</string>
+    <string name="no_news_found_toast">No Data Found, Check News Title\n</string>
+    <string name="data_deleted">Data is successfully deleted</string>
+    <string name="data_saved">Data is successfully saved</string>
+    <string name="no_data_exist">The article has not been saved</string>
 
+    
     <!-- Merriam Webster Dictionary -->
     <string name="action_dictionary">Merriam Webster Dictionary</string>
     <string name="dictionary_about">Данные предоставлены Merriam Webster Dictionary\n www.dictionaryapi.com  \n</string>
