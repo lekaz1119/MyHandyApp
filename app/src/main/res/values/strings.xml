@@ -30,7 +30,7 @@
     <string name="flight_tracker_about">Flight Tracker data provided by \n Aviation-edge.com\n</string>
     <string name="flight_tracker_help">Flight Tracker version <u>1.0</u>
         \nDeveloped by: <b>Lena Kazantseva</b>
-        \n\nTo list currnet flights from an airport, enter <i>Airport Code</i> and click <b>Search</b>;
+        \n\nTo list current flights from an airport, enter <i>Airport Code</i> and click <b>Search</b>;
         \n\nExample: for Ottawa enter <b>YOW</b>, Toronto <b>YYZ</b>, Montreal <b>YUL</b>.
         \n\nScroll and select desired Flight.
         \nClick on the <i>Flight</i> to view more details.
@@ -45,7 +45,21 @@
     <!-- New York Times Article Search Activity -->
     <string name="action_nyt">New York Times</string>
     <string name="nyt_about">Data provided by \n New York Times website \n</string>
-    <string name="nyt_help">NYT  help ... \n\n change as you need</string>
+    <string name="nyt_help">New York Times Article Search:
+        \n\n <b>Developed by Tara Davoodnia </b>
+        \n\n <b> Version 1</b>
+        \n\n <b>It shows a list of articles that match the search term.</b>
+        \n\n <b>It creates a list of titles that are retrieved in the results.</b>
+        \n\n <b>Clicking on a title loads the rest of the news article</b>
+    </string>
+    <string name="nyt_search_hint"> Type The Title </string>
+    <string name="txt_search_NYT"> Search Your Title </string>
+    <string name="txt_delete_NYT"> Delete</string>
+    <string name="txt_save_NYT"> Save</string>
+    <string name="nyt_articles_found_toast">Found new articles!\n</string>
+    <string name="nyt_articles_notfound_toast">Nothing found for your search!\n</string>
+    <string name="data_saved_NYT_toast">Article has been saved!\n</string>
+    <string name="nyt_article_url"> Link to original Article </string>
 
     <!-- News Feed -->
     <string name="action_news">News Feed</string>
@@ -60,10 +74,8 @@
         \nSaved list will be shown whenever you come back.
         \nTo remove the list of saved articles, click the <b>reset</b> button on the main page
         </string>
-    <string name="save">Save</string>
     <string name="news_search_hint">Enter News title</string>
     <string name="no_news_found_toast">No Data Found, Check News Title\n</string>
-    <string name="Save">Save</string>
     <string name="data_deleted">Data is successfully deleted</string>
     <string name="data_saved">Data is successfully saved</string>
     <string name="no_data_exist">The article has not been saved</string>
@@ -76,7 +88,7 @@
     <!-- Merriam Webster Dictionary -->
     <string name="action_dictionary">Merriam Webster Dictionary</string>
     <string name="dictionary_about">Data provided by Merriam Webster Dictionary\n www.dictionaryapi.com  \n</string>
-    <string name="dictionary_help">Dictinary help ... \n\n change as you need </string>
+    <string name="dictionary_help">Dictinary help &#8230; \n\n change as you need </string>
     <string name="avatar">avatar</string>
 
 </resources>
