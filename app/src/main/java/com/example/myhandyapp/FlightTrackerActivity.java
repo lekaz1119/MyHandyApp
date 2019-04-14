@@ -41,7 +41,7 @@ public class FlightTrackerActivity extends CommonActivity {
     private  int progress=0;
 
     private static final String AIRPORT_CODE = "AirportCode";
-    private static final String API_KEY = "6922c9-61988f";
+    private static final String API_KEY = "ee5f04-b315b0";
     private static final String PARAM_DEPART = "&depIata=";
     private static final String PARAM_ARRIVE = "&arrIata=";
 
