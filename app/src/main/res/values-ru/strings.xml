@@ -64,18 +64,18 @@
     <!-- News Feed -->
     <string name="action_news">News Feed</string>
     <string name="news_about">Данные новостей представлены \n webhose.io \n</string>
-    <string name="news_help">Новости  помощь ... \n\n изменить как вам нужно </string>
+    <string name="news_help">Новости  помощь &#8230; \n\n изменить как вам нужно </string>
     <string name="news_search_hint">Enter News title</string>
     <string name="no_news_found_toast">No Data Found, Check News Title\n</string>
     <string name="data_deleted">Data is successfully deleted</string>
     <string name="data_saved">Data is successfully saved</string>
     <string name="no_data_exist">The article has not been saved</string>
 
-    
+
     <!-- Merriam Webster Dictionary -->
     <string name="action_dictionary">Merriam Webster Dictionary</string>
     <string name="dictionary_about">Данные предоставлены Merriam Webster Dictionary\n www.dictionaryapi.com  \n</string>
-    <string name="dictionary_help">Словарь помощь ... \n\n изменить как вам нужно </string>
+    <string name="dictionary_help">Словарь помощь &#8230; \n\n изменить как вам нужно </string>
     <string name="avatar">avatar</string>
 
 </resources>
