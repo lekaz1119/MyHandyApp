@@ -73,6 +73,8 @@ public class FlightTrackerFragment extends Fragment {
         // get the delete button, and add a click listener:
         deleteButton.setOnClickListener( clk -> {
 
+            //isTablet is set to true if fragment is found ithe FlightTracke layout, it's on in the 720 layouts
+            // in phone layouts, fragment appears separatly in new FlightTrackerFragment layout
             if(isTablet) { //both the list and details are on the screen:
                 FlightTrackerActivity parent = (FlightTrackerActivity)getActivity();
 
@@ -96,8 +98,10 @@ public class FlightTrackerFragment extends Fragment {
         });
 
 
-        // get the save button, and add a click listener:
-
+        /**
+         * get the save button, and add a click listener:
+         * used to save Flight item to database
+         */
         saveButton.setOnClickListener( clk -> {
             FlightsDataSource datasource;
             datasource = new FlightsDataSource(getActivity().getApplicationContext());
@@ -116,6 +120,8 @@ public class FlightTrackerFragment extends Fragment {
             Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R.string.data_saved_toast), Toast.LENGTH_SHORT).show();
         });
 
+        // if record already in DB, the id will be non zero, so we hide the add button, but show the delete button
+        // otherwise, if id == 0 then record is not in DB, so we show ADD button and hide delete
         if(id == 0) {
             deleteButton.setVisibility(View.INVISIBLE);
             saveButton.setVisibility(View.VISIBLE);

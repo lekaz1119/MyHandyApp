@@ -18,6 +18,11 @@ import android.view.View;
 public class MainActivity extends AppCompatActivity {
     SharedPreferences sp;
 
+    /**
+     * Common activity, holds acommon functionality and initializes menus and all the buttons
+     * other activities need to extend this to inherit functionality
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,6 +77,11 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * handes menu clicks and implements common snackbar, tost in the main screen
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will

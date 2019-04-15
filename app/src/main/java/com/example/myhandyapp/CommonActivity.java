@@ -38,6 +38,10 @@ public abstract class CommonActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * hides keyboads
+     * @param activity
+     */
     protected static void hideKeyboard(Activity activity) {
         InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
         //Find the currently focused view, so we can grab the correct window token from it.
@@ -49,7 +53,12 @@ public abstract class CommonActivity extends AppCompatActivity {
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
-    //update menu to reflect current activity options
+
+    /**
+     * update menu to reflect current activity options
+     * @param menu
+     * @return
+     */
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         if(Build.VERSION.SDK_INT > 11) {
@@ -104,10 +113,15 @@ public abstract class CommonActivity extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * Handle action bar item clicks here. The action bar will
+     * automatically handle clicks on the Home/Up button, so long
+     * as you specify a parent activity in AndroidManifest.xml.
+     * @param item
+     * @return
+     */
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+
         int id = item.getItemId();
 
         switch (id) {
@@ -174,21 +188,32 @@ public abstract class CommonActivity extends AppCompatActivity {
         return  Snackbar.make(findViewById(android.R.id.content), this.getResources().getString(snackBarMessageID), Snackbar.LENGTH_LONG);
     }
 
-    //clear shared prefs object
+    /**
+     * clear shared prefs object
+     * @param code
+     */
     protected void removeSharedPreference(String code){
         SharedPreferences.Editor editor = sp.edit();
         editor.remove(code);
         editor.apply();
     }
 
-    //add to shared prefs object
+    /**
+     * add to shared prefs object
+     * @param code
+     * @param value
+     */
     protected void saveSharedPreference(String code, String value){
         SharedPreferences.Editor editor = sp.edit();
         editor.putString(code, value);
         editor.apply();
     }
 
-    //A copy of ArrayAdapter. You just give it an array and it will do the rest of the work.
+
+    /**
+     * A copy of ArrayAdapter. You just give it an array and it will do the rest of the work.
+     * @param <E>
+     */
     protected abstract class CommonAdapter<E> extends BaseAdapter
     {
         protected List<E> dataCopy = null;
@@ -205,7 +230,10 @@ public abstract class CommonActivity extends AppCompatActivity {
             dataCopy = Arrays.asList(array);
         }
 
-        //Tells the list how many elements to display:
+        /**
+         * Tells the list how many elements to display:
+         * @return
+         */
         public int getCount()
         {
             return dataCopy.size();
@@ -215,10 +243,21 @@ public abstract class CommonActivity extends AppCompatActivity {
             return dataCopy.get(position);
         }
 
-        //you need to implement this method individually, based on your list item
+        /**
+         * you need to implement this method individually, based on your list item
+         * @param position
+         * @param old
+         * @param parent
+         * @return
+         */
         public abstract View getView(int position, View old, ViewGroup parent);
 
-        //Return DB id
+
+        /**
+         * Return DB id
+         * @param position
+         * @return
+         */
         public long getItemId(int position)
         {
             return  ((ListItem)getItem(position)).getId();

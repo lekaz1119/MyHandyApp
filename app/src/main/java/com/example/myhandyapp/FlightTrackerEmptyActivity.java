@@ -4,7 +4,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 public class FlightTrackerEmptyActivity extends AppCompatActivity {
-
+    /**
+     * thisis used when fragment is loaded in the phone
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

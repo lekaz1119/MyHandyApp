@@ -28,20 +28,42 @@ public class FlightsDataSource {
             FlightsSQLiteHelper.COLUMN_FLIGHT_STATUS
     };
 
+    /**
+     * Datasource constructor
+     * @param context
+     */
     public FlightsDataSource(Context context) {
         dbHelper = new FlightsSQLiteHelper(context);
     }
 
+    /**
+     * opens DB connection
+     */
     public void open() throws SQLException {
         database = dbHelper.getWritableDatabase();
     }
 
+    /**
+     * coses DB connection
+     */
     public void close() {
         dbHelper.close();
     }
 
-    //create flight record in database and get it's DB id.
+    //
     //retrieve the DB flight record, crete new FlightObject, add ID to it and return for further processing.
+    /**
+     * create flight record in database and get it's DB id.
+     * @param airportFrom
+     * @param airportTo
+     * @param flight
+     * @param location
+     * @param speed
+     * @param altitude
+     * @param status
+     *
+     * @return Flight
+     */
     public Flight createFlight(String airportFrom, String airportTo, String flight,
                                 String location, String speed, String altitude, String status) {
         ContentValues values = new ContentValues();
@@ -62,12 +84,20 @@ public class FlightsDataSource {
         return newFlight;
     }
 
+    /**
+     * deletes flight record from DB
+     * @param id
+     */
     public void deleteFlight(long id ) {
         Log.d(FlightsSQLiteHelper.TABLE_FLIGHTS, " deleted with id: " + id);
         database.delete(FlightsSQLiteHelper.TABLE_FLIGHTS, FlightsSQLiteHelper.COLUMN_ID
                 + " = " + id, null);
     }
 
+    /**
+     * returns list of all flights from DB
+     * @return
+     */
     public List<Flight> getAllFlights() {
         List<Flight> flights = new ArrayList<Flight>();
 
@@ -87,7 +117,11 @@ public class FlightsDataSource {
     }
 
 
-    //add DB is to the flight object
+    /**
+     * add DB is to the flight object
+     * @param cursor
+     * @return
+     */
     private Flight cursorToFlight(Cursor cursor) {
         Flight flight = new Flight();
         flight.setId(cursor.getLong(0));
@@ -102,6 +136,10 @@ public class FlightsDataSource {
         return flight;
     }
 
+    /**
+     * print DB , used in debug
+     * @param c
+     */
     public void printCursor(Cursor c){
         FlightsSQLiteHelper.printCursor(c);
     }

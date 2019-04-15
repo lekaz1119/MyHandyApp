@@ -61,7 +61,9 @@ public class FlightTrackerActivity extends CommonActivity {
     //+PARAM_DEPART+airportCode
     //+PARAM_ARRIVE+airportCode;
 
-    //used to slowdown process and show progress bar updates
+    /**
+     * used to slowdown process and show progress bar updates
+     */
     private static final int pause = 1800; //milliseconds
 
     Button btnReset;
@@ -80,6 +82,7 @@ public class FlightTrackerActivity extends CommonActivity {
         sp = getSharedPreferences("shared_prefs", Context.MODE_PRIVATE);
         String savedAirport = sp.getString(AIRPORT_CODE, "");
 
+        // find and connet to editTest where you type airportCode
         txtAirportCode= findViewById(R.id.txtAirportCode);
         txtAirportCode.setText(savedAirport);
 

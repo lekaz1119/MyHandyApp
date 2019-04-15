@@ -22,7 +22,9 @@ public class FlightsSQLiteHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "flights.db";
     private static final int DATABASE_VERSION = 1; //change id to drop existing the database
 
-    // Database creation sql statement
+    /**
+     * Database creation sql statement
+     */
     private static final String DATABASE_CREATE = "create table "
             + TABLE_FLIGHTS + "( " + COLUMN_ID  + " integer primary key autoincrement, "
             + COLUMN_AIRPORT_FROM + " text not null, "
@@ -51,6 +53,12 @@ public class FlightsSQLiteHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    /**
+     *
+     * @param db
+     * @param oldVersion
+     * @param newVersion
+     */
     @Override
     public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         Log.w(FlightsSQLiteHelper.class.getName(),
@@ -60,6 +68,10 @@ public class FlightsSQLiteHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    /**
+     * method that prints all colums and data rows from DB, it's used for debuging
+     * @param c
+     */
     public static void printCursor(Cursor c){
         Log.d(FlightsDataSource.class.getName()," Cursor information:");
         Log.d("Database Version: ",String.valueOf(DATABASE_VERSION));
