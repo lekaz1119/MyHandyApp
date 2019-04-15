@@ -155,6 +155,12 @@ public class FlightTrackerActivity extends CommonActivity {
         ((MyArrayAdapter) adt).notifyDataSetChanged();
     }
 
+    /**
+     * action taken whe reset button is pushed
+     * delete all records from Database
+     * clear flightList and all items from the screen
+     * delete airport code from shared preferences
+     */
     private void dispatchResetAction() {
         txtAirportCode.setText("");
         datasource = new FlightsDataSource(this);
@@ -177,6 +183,13 @@ public class FlightTrackerActivity extends CommonActivity {
         Toast.makeText(getApplicationContext(),  this.getResources().getString(R.string.reset_toast), Toast.LENGTH_SHORT).show();
     }
 
+    /**
+     * action is taken when search button is pressed
+     * show progressbar,
+     * retrieve arriving flights and process data by adding them to flightList
+     * retrieve departing flights and process data by adding them to flightList
+     * update progress bar each time
+     */
     private void dispatchSearchAction() {
         airportCode = txtAirportCode.getText().toString();
 
@@ -202,7 +215,12 @@ public class FlightTrackerActivity extends CommonActivity {
         Log.d("you clicked on :" , "Button search");
     }
 
-    //This function only gets called on the phone. The tablet never goes to a new activity
+    /**
+     * This function only gets called on the phone. The tablet never goes to a new activity
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(requestCode == EMPTY_ACTIVITY)
@@ -211,12 +229,17 @@ public class FlightTrackerActivity extends CommonActivity {
             {
                 long id = data.getLongExtra(ITEM_ID, 0);
                 int position = data.getIntExtra(ITEM_POSITION, 0);
-                deleteMessageId(id, position);
+                deleteFlightId(id, position);
             }
         }
     }
 
-    public void deleteMessageId(long id, int position)
+    /**
+     * delete flight record from Database
+     * @param id
+     * @param position
+     */
+    public void deleteFlightId(long id, int position)
     {
         Log.d("Deleting ID :" , " id="+ id + " at position= "+position);
         datasource.deleteFlight(id);
@@ -225,7 +248,12 @@ public class FlightTrackerActivity extends CommonActivity {
         refreshListAdapter();
     }
 
-    //A copy of ArrayAdapter. You just give it an array and it will do the rest of the work.
+
+    /**
+     * A copy of ArrayAdapter. You just give it an array and it will do the rest of the work.
+     * taken from Android labs
+     * @param <E>
+     */
     protected class MyArrayAdapter<E> extends CommonAdapter<E>
     {
 
@@ -256,7 +284,12 @@ public class FlightTrackerActivity extends CommonActivity {
 
     }
 
-    // a subclass of AsyncTask                  Type1    Type2    Type3
+
+    /**
+     * a subclass of AsyncTask                  Type1    Type2    Type3
+     * calls FlightTracker Apis in the background, and processes the data
+     * if flights found it addesm to the flightList and shows on the screen
+     */
     private class  FlightQuery extends AsyncTask<String, Integer, String>
     {
         @Override
@@ -383,6 +416,10 @@ public class FlightTrackerActivity extends CommonActivity {
             Log.d("AsyncTaskExample", "update progress bar:" + values[0]);
         }
 
+        /**
+         * shows tosat to user telling if new flights were found
+         * @param s
+         */
         @Override
         protected void onPostExecute(String s) {
             progressBar.setVisibility(View.INVISIBLE);
@@ -393,6 +430,9 @@ public class FlightTrackerActivity extends CommonActivity {
                 Toast.makeText(getApplicationContext(), getResources().getString(R.string.no_data_found_toast), Toast.LENGTH_LONG).show();
         }
 
+        /**
+         * used to slowdown process, only to demonstrate progress bar
+         */
         private void pause(){
             try {
                 Log.d("Sleeping ", String.valueOf(pause));

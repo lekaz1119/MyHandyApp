@@ -79,7 +79,7 @@ public class FlightTrackerFragment extends Fragment {
                 FlightTrackerActivity parent = (FlightTrackerActivity)getActivity();
 
                 //this deletes the item and updates the list
-                parent.deleteMessageId((long)id, dataFromActivity.getInt(FlightTrackerActivity.ITEM_POSITION));
+                parent.deleteFlightId((long)id, dataFromActivity.getInt(FlightTrackerActivity.ITEM_POSITION));
 
                 //now remove the fragment since you deleted it from the database:
                 // this is the object to be removed, so remove(this):
