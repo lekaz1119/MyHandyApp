@@ -32,6 +32,8 @@
             android:parentActivityName=".NewsActivity"/>
         <activity android:name=".FlightTrackerEmptyActivity"
             android:parentActivityName=".FlightTrackerActivity"/>
+        <activity android:name=".DictionaryEmptyActivity"
+            android:parentActivityName=".DictionaryActivity"/>
         <activity android:name=".NYTEmptyActivity"
             android:parentActivityName=".NYTActivity"/>
     </application>

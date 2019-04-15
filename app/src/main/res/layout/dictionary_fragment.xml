@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/dictFragmentLocation"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccent"
-    android:id="@+id/dictFragmentLocation">
+    android:background="@color/colorAccent">
 
     <ImageButton
         android:id="@+id/btnDict"
@@ -18,77 +18,81 @@
         android:focusable="false"
         android:focusableInTouchMode="false" />
 
+
     <TextView
         android:id="@+id/dictWord"
-        android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:text=""
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnDict"
         android:layout_centerHorizontal="true"
         android:gravity="center"
         android:paddingStart="5dp"
-        android:textSize="45sp"
-        android:layout_below="@+id/btnDict"/>
+        android:text=""
+        android:textSize="45sp" />
 
     <TextView
         android:id="@+id/entryNumber"
-        android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:text=""
-        android:layout_weight=".4"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/dictWord"
-        android:textSize="35sp"/>
+        android:layout_weight=".4"
+        android:text=""
+        android:textSize="35sp" />
 
     <TextView
         android:id="@+id/word"
-        android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:text="@string/dictWordTxt"
-        android:textSize="25sp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/entryNumber"
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:layout_below="@+id/entryNumber"/>
+        android:text="@string/dictWordTxt"
+        android:textSize="25sp" />
 
     <TextView
         android:id="@+id/partOfSpeech"
-        android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:text="@string/dictPartOfSpeech"
-        android:textSize="25sp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/word"
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:layout_below="@+id/word"/>
+        android:text="@string/dictPartOfSpeech"
+        android:textSize="25sp" />
+
 
     <TextView
         android:id="@+id/pronunciation"
-        android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:text="@string/dictPronunciation"
-        android:textSize="25sp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/partOfSpeech"
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:layout_below="@+id/partOfSpeech"/>
+        android:text="@string/dictPronunciation"
+        android:textSize="25sp" />
+
 
     <TextView
         android:id="@+id/definitions"
-        android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:text="@string/dictDefinitions"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/pronunciation"
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:textSize="45sp"
-        android:layout_below="@+id/pronunciation"/>
+        android:text="@string/dictDefinitions"
+        android:textSize="45sp" />
 
     <Button
+        android:id="@+id/dictDeleteButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:text="@string/dictDeleteBtnTxt"
-        android:id="@+id/dictDeleteButton"/>
+        android:text="@string/dictDeleteBtnTxt" />
+
     <Button
+        android:id="@+id/dictSaveButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:text="@string/dictSaveBtnTxt"
-        android:id="@+id/dictSaveButton"/>
+        android:text="@string/dictSaveBtnTxt" />
 
 </RelativeLayout>

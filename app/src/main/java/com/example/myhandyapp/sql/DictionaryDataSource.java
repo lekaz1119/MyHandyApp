@@ -8,7 +8,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.example.myhandyapp.listitems.Dictionary;
-import com.example.myhandyapp.listitems.Flight;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -88,7 +87,7 @@ public class DictionaryDataSource {
      * method to get all the definitions stored in the database
      * @return
      */
-    public List<Dictionary> getAllFlights() {
+    public List<Dictionary> getAllDefinitions() {
         List<Dictionary> definitions = new ArrayList<Dictionary>();
 
         Cursor cursor = database.query(DictionarySQLiteHelper.TABLE_DICTIONARY,

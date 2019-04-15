@@ -95,5 +95,8 @@
     <string name="dictDefinitions">Definitions: </string>
     <string name="dictDeleteBtnTxt">Delete</string>
     <string name="dictSaveBtnTxt">Save</string>
+    <string name="dictResetBtnTxt">Reset</string>
+    <string name="dictWordSearchHint">Lookup your word here</string>
+    <string name="dictBtnSearchTxt">Search</string>
 
 </resources>

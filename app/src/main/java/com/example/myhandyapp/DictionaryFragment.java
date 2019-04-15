@@ -75,7 +75,7 @@ public class DictionaryFragment extends Fragment {
                 DictionaryActivity parent = (DictionaryActivity) getActivity();
 
                 //this deletes the item and updates the list
-                parent.deleteMessageId((long) id, dataFromActivity.getInt(DictionaryActivity.ITEM_POSITION));
+                parent.deleteDictionaryId((long) id, dataFromActivity.getInt(DictionaryActivity.ITEM_POSITION));
 
                 //now remove the fragment since you deleted it from the database:
                 // this is the object to be removed, so remove(this):
@@ -84,7 +84,7 @@ public class DictionaryFragment extends Fragment {
             //for Phone:
             else //You are only looking at the details, you need to go back to the previous list page
             {
-                DictionaryActivity parent = (DictionaryActivity) getActivity();
+                DictionaryEmptyActivity parent = (DictionaryEmptyActivity) getActivity();
                 Intent backToChatRoomActivity = new Intent();
                 backToChatRoomActivity.putExtra(DictionaryActivity.ITEM_ID, dataFromActivity.getLong(DictionaryActivity.ITEM_ID));
                 backToChatRoomActivity.putExtra(DictionaryActivity.ITEM_POSITION, dataFromActivity.getInt(DictionaryActivity.ITEM_POSITION));

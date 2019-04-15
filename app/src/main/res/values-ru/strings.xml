@@ -73,9 +73,18 @@
 
 
     <!-- Merriam Webster Dictionary -->
-    <string name="action_dictionary">Merriam Webster Dictionary</string>
+    <string name="action_dictionary">Словарь Merriam Webster</string>
     <string name="dictionary_about">Данные предоставлены Merriam Webster Dictionary\n www.dictionaryapi.com  \n</string>
     <string name="dictionary_help">Словарь помощь &#8230; \n\n изменить как вам нужно </string>
-    <string name="avatar">avatar</string>
+    <string name="avatar">аватар</string>
+    <string name="dictWordTxt">Слово: </string>
+    <string name="dictPartOfSpeech">Часть речи: </string>
+    <string name="dictPronunciation">Произношение: </string>
+    <string name="dictDefinitions">Определения: </string>
+    <string name="dictDeleteBtnTxt">удалять</string>
+    <string name="dictSaveBtnTxt">Сохранить</string>
+    <string name="dictResetBtnTxt">Сброс</string>
+    <string name="dictWordSearchHint">Найдите здесь свое слово</string>
+    <string name="dictBtnSearchTxt">Поиск</string>
 
 </resources>
