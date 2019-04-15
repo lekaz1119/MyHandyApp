@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorAccent"
+    android:id="@+id/dictFragmentLocation">
+
+    <ImageButton
+        android:id="@+id/btnDict"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/dictionary_logo"
+        android:clickable="false"
+        android:contentDescription="@string/avatar"
+        android:focusable="false"
+        android:focusableInTouchMode="false" />
+
+    <TextView
+        android:id="@+id/dictWord"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text=""
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:paddingStart="5dp"
+        android:textSize="45sp"
+        android:layout_below="@+id/btnDict"/>
+
+    <TextView
+        android:id="@+id/entryNumber"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text=""
+        android:layout_weight=".4"
+        android:layout_below="@+id/dictWord"
+        android:textSize="35sp"/>
+
+    <TextView
+        android:id="@+id/word"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="@string/dictWordTxt"
+        android:textSize="25sp"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:layout_below="@+id/entryNumber"/>
+
+    <TextView
+        android:id="@+id/partOfSpeech"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="@string/dictPartOfSpeech"
+        android:textSize="25sp"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:layout_below="@+id/word"/>
+
+    <TextView
+        android:id="@+id/pronunciation"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="@string/dictPronunciation"
+        android:textSize="25sp"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:layout_below="@+id/partOfSpeech"/>
+
+    <TextView
+        android:id="@+id/definitions"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="@string/dictDefinitions"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:textSize="45sp"
+        android:layout_below="@+id/pronunciation"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="@string/dictDeleteBtnTxt"
+        android:id="@+id/dictDeleteButton"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="@string/dictSaveBtnTxt"
+        android:id="@+id/dictSaveButton"/>
+
+</RelativeLayout>
