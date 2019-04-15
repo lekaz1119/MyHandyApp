@@ -121,6 +121,7 @@ public class NewsActivity extends CommonActivity {
             News news = (News)adapter.getItem(position);
             Bundle dataToPass = new Bundle();
 
+            dataToPass.putLong(NEWS_ID,news.getId());
             dataToPass.putString(NEWS_TITLE,news.getTitle());
             dataToPass.putString(NEWS_AUTHOR,news.getAuthor());
             dataToPass.putString(NEWS_ARTICLE,news.getNewsArticle());
