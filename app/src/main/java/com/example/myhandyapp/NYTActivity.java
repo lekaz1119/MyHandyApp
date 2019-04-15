@@ -45,6 +45,7 @@ public class NYTActivity extends CommonActivity {
     private NYTsDataSource datasource;
     private  int progress=0;
 
+    //image buttons below
     ImageButton btnSearch;
     ImageButton btnClear;
     EditText txtNYTSearch;
