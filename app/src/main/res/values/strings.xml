@@ -84,11 +84,16 @@
 
 
 
-
     <!-- Merriam Webster Dictionary -->
     <string name="action_dictionary">Merriam Webster Dictionary</string>
     <string name="dictionary_about">Data provided by Merriam Webster Dictionary\n www.dictionaryapi.com  \n</string>
     <string name="dictionary_help">Dictinary help &#8230; \n\n change as you need </string>
     <string name="avatar">avatar</string>
+    <string name="dictWordTxt">Word: </string>
+    <string name="dictPartOfSpeech">Part of Speech: </string>
+    <string name="dictPronunciation">Pronunciation: </string>
+    <string name="dictDefinitions">Definitions: </string>
+    <string name="dictDeleteBtnTxt">Delete</string>
+    <string name="dictSaveBtnTxt">Save</string>
 
 </resources>

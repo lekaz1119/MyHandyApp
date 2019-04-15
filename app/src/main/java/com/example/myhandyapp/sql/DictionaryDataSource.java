@@ -24,6 +24,7 @@ public class DictionaryDataSource {
     private DictionarySQLiteHelper dbHelper;
     private String[] allColumns = {
             DictionarySQLiteHelper.COLUMN_ID,
+            DictionarySQLiteHelper.COLUMN_DICT_WORD,
             DictionarySQLiteHelper.COLUMN_ENTRY_NUMBER,
             DictionarySQLiteHelper.COLUMN_WORD,
             DictionarySQLiteHelper.COLUMN_PART_OF_SPEECH,
@@ -56,8 +57,9 @@ public class DictionaryDataSource {
 
     //create a definition record in the database and get it's DB id.
     //retrieve the DB definition record, crete new DictionaryObject, add ID to it and return for further processing.
-    public Dictionary createDefinition(String entryNumber, String word, String partOfSpeech, String pronunciation, String definitions) {
+    public Dictionary createDefinition(String dictWord, String entryNumber, String word, String partOfSpeech, String pronunciation, String definitions) {
         ContentValues values = new ContentValues();
+        values.put(DictionarySQLiteHelper.COLUMN_DICT_WORD, dictWord);
         values.put(DictionarySQLiteHelper.COLUMN_ENTRY_NUMBER, entryNumber);
         values.put(DictionarySQLiteHelper.COLUMN_WORD, word);
         values.put(DictionarySQLiteHelper.COLUMN_PART_OF_SPEECH, partOfSpeech);
@@ -112,11 +114,12 @@ public class DictionaryDataSource {
     private Dictionary cursorToDictionary(Cursor cursor) {
         Dictionary definition = new Dictionary();
         definition.setId(cursor.getLong(0));
-        definition.setEntryNumber(cursor.getString(1));
-        definition.setWord(cursor.getString(2));
-        definition.setPartOfSpeech(cursor.getString(3));
-        definition.setPronunciation(cursor.getString(4));
-        definition.setDefinitions(cursor.getString(5));
+        definition.setDictWord(cursor.getString(1));
+        definition.setEntryNumber(cursor.getString(2));
+        definition.setWord(cursor.getString(3));
+        definition.setPartOfSpeech(cursor.getString(4));
+        definition.setPronunciation(cursor.getString(5));
+        definition.setDefinitions(cursor.getString(6));
 
         return definition;
     }

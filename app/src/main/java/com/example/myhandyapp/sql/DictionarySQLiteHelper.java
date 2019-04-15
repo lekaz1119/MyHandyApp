@@ -13,6 +13,7 @@ public class DictionarySQLiteHelper extends SQLiteOpenHelper {
 
     public static final String TABLE_DICTIONARY = "dictionary";
     public static final String COLUMN_ID = "_id";
+    public static final String COLUMN_DICT_WORD = "dict_word";
     public static final String COLUMN_ENTRY_NUMBER = "entry_number";
     public static final String COLUMN_WORD = "word";
     public static final String COLUMN_PART_OF_SPEECH = "part_of_speech";
@@ -25,6 +26,7 @@ public class DictionarySQLiteHelper extends SQLiteOpenHelper {
     // Database creation sql statement
     private static final String DATABASE_CREATE = "create table "
             + TABLE_DICTIONARY + "( " + COLUMN_ID  + " integer primary key autoincrement, "
+            + COLUMN_DICT_WORD + " text not null, "
             + COLUMN_ENTRY_NUMBER + " text not null, "
             + COLUMN_WORD + " text not null, "
             + COLUMN_PART_OF_SPEECH + " text not null, "

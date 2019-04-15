@@ -4,6 +4,7 @@ package com.example.myhandyapp.listitems;
 public class Dictionary extends ListItem {
 
     private long id;
+    private String dictWord;
     private String entryNumber;
     private String word;
     private String partOfSpeech;
@@ -11,6 +12,14 @@ public class Dictionary extends ListItem {
     private String definitions;
 
     public Dictionary() { }
+
+    public String getDictWord() {
+        return dictWord;
+    }
+
+    public void setDictWord(String dictWord) {
+        this.dictWord = dictWord;
+    }
 
     public String getEntryNumber() {
         return entryNumber;
