@@ -63,7 +63,7 @@ android:orientation="vertical">
         android:id="@+id/flightProgressBar"
         style="@style/customProgressBar" />
     <FrameLayout
-        android:id="@+id/dictFragmentLocation"
+        android:id="@+id/fragmentLocation"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorPrimary"
