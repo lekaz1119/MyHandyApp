@@ -98,5 +98,7 @@
     <string name="dictResetBtnTxt">Reset</string>
     <string name="dictWordSearchHint">Lookup your word here</string>
     <string name="dictBtnSearchTxt">Search</string>
+    <string name="data_saved_Dict_toast">Word has been saved!\n</string>
+
 
 </resources>

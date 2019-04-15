@@ -108,7 +108,7 @@ public class DictionaryFragment extends Fragment {
                     dataFromActivity.getString(DictionaryActivity.DEFINITIONS));
             datasource.close();
 
-            Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R.string.data_saved_toast), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R.string.data_saved_Dict_toast), Toast.LENGTH_SHORT).show();
         });
 
         if (id == 0) {
