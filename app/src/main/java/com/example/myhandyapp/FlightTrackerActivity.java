@@ -147,7 +147,6 @@ public class FlightTrackerActivity extends CommonActivity {
             //refreshListAdapter();
         });
 
-
         progressBar = findViewById(R.id.flightProgressBar);
     }
 

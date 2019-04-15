@@ -129,6 +129,7 @@ public class FlightTrackerFragment extends Fragment {
             deleteButton.setVisibility(View.VISIBLE);
             saveButton.setVisibility(View.INVISIBLE);
         }
+
         return result;
     }
 }
