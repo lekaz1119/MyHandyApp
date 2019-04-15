@@ -45,21 +45,21 @@
     <!-- New York Times Article Search Activity -->
     <string name="action_nyt">Нью Йорк Таймс</string>
     <string name="nyt_about">Данные предоставлены \n Нью Йорк Таймс веб-сайтом \n</string>
-    <string name="nyt_help">New York Times Article Search:
-        \n\n <b>Developed by Tara Davoodnia </b>
-        \n\n <b> Version 1</b>
-        \n\n <b>It shows a list of articles that match the search term.</b>
-        \n\n <b>It creates a list of titles that are retrieved in the results.</b>
-        \n\n <b>Clicking on a title loads the rest of the news article</b>
+    <string name="nyt_help">New York Times Поиск статьи:
+        \n\n <b>Разработано Тарой Давудния </b>
+        \n\n <b> Версия 1</b>
+        \n\n <b>Показывает список статей, соответствующих поисковому запросу.</b>
+        \n\n <b>Он создает список названий, которые извлекаются в результатах.</b>
+        \n\n <b>Нажатие на заголовок загружает остальную часть новостной статьи</b>
     </string>
-    <string name="nyt_search_hint"> Type The Title </string>
-    <string name="txt_search_NYT"> Search Your Title </string>
-    <string name="txt_delete_NYT"> Delete</string>
-    <string name="txt_save_NYT"> Save</string>
-    <string name="nyt_articles_found_toast">Found new articles!\n</string>
-    <string name="nyt_articles_notfound_toast">Nothing found for your search!\n</string>
-    <string name="data_saved_NYT_toast">Article has been saved!\n</string>
-    <string name="nyt_article_url"> Link to original Article </string>
+    <string name="nyt_search_hint"> Введите название </string>
+    <string name="txt_search_NYT"> Поиск вашего заголовка </string>
+    <string name="txt_delete_NYT"> Удалить</string>
+    <string name="txt_save_NYT"> Сохранить</string>
+    <string name="nyt_articles_found_toast">Нашел новые статьи!\n</string>
+    <string name="nyt_articles_notfound_toast">Ничего не найдено для вашего поиска!\n</string>
+    <string name="data_saved_NYT_toast">Статья была сохранена!\n</string>
+    <string name="nyt_article_url"> Ссылка на оригинальную статью </string>
 
     <!-- News Feed -->
     <string name="action_news">News Feed</string>
