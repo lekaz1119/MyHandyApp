@@ -38,7 +38,7 @@ public class NYTsSQLiteHelper extends SQLiteOpenHelper {
     }
 
     /**
-     * First time when the database file doesn’t exist yet, this method gets called .
+     * First time when the database file doesn't exist yet, this method gets called .
      * It creates the table with the id, title, article and link.
      * @param database
      */
