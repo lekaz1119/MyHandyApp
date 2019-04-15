@@ -36,6 +36,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+/**
+ * This is the main activity that inflates the main page and has methods to populate news list, save or delete news items from the
+ * list and a class to get the data from the source page.
+ */
+
 public class NYTActivity extends CommonActivity {
 
 
@@ -64,7 +69,10 @@ public class NYTActivity extends CommonActivity {
     //this is used to slowdown so i can see progress bar
     private static final int pause = 1000;
 
-
+    /**
+     * This method gets the message from shared preference and showing on edit text
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,17 +86,27 @@ public class NYTActivity extends CommonActivity {
         sp = getSharedPreferences("shared_prefs", Context.MODE_PRIVATE);
         String savedSearchTerm = sp.getString(NYT_SEARCH_TERM, "");
 
+
+
         txtNYTSearch = findViewById(R.id.txtNYTSearch);
         txtNYTSearch.setText(savedSearchTerm);
 
-        //search button
+        /**
+         * It is the search button. IT calls the search action if the search button gets clicked.
+         */
         btnSearch = findViewById(R.id.btnSearch);
         btnSearch.setOnClickListener( b -> searchAction());
 
 
-        // clear all button
+        /**
+         *  It is the clear button. It calls the resetAction if the clear button gets clicked.
+         */
         btnClear = findViewById(R.id.btnClear);
         btnClear.setOnClickListener( b -> resetAction());
+
+        /**
+         * It gets the data from datasource loading on listView
+         */
 
         datasource = new NYTsDataSource(this);
         datasource.open();
@@ -98,6 +116,10 @@ public class NYTActivity extends CommonActivity {
 
 
         adt = new MyArrayAdapter(nytList);
+        /**
+         * Implements swipe-down functionality to refresh the list.
+         * It is scroll the page. It is written base on the lab that we had
+         */
 
         ListView theList = findViewById(R.id.nyt_list);
         SwipeRefreshLayout refresher = findViewById(R.id.refresher);
@@ -107,8 +129,10 @@ public class NYTActivity extends CommonActivity {
         });
 
         theList.setAdapter(adt);
-
-        //This listens for items being clicked in the list view
+        /**
+         * It connects the list to the database.It populate the listView with data. it cause the listview to draw items
+         * This listens for items being clicked in the list view.
+         */
         theList.setOnItemClickListener(( list, item,  position,  id) -> {
 
             Log.d("you clicked on :" , "item "+ position + ", db_ID: " + id);
@@ -120,6 +144,12 @@ public class NYTActivity extends CommonActivity {
             dataToPass.putString(LINK, nyt.getLink());
             dataToPass.putString(ARTICLE, nyt.getArticle());
             dataToPass.putInt(ITEM_POSITION, position);
+
+            /**
+             * From the variable isTablet if the fragment is loaded tells the fragment that is it is running on a tablet and load the fragment.
+             * If it is not on tablet and it is on phone it will go to the NYTEmptyActivity
+             *
+             */
 
             if(isTablet)
             {
@@ -138,7 +168,7 @@ public class NYTActivity extends CommonActivity {
                 nextActivity.putExtras(dataToPass); //send data to next activity
                 startActivityForResult(nextActivity, NYT_EMPTY_ACTIVITY); //make the transition
             }
-            //refreshListAdapter();
+
         });
         progressBar = findViewById(R.id.nytProgressBar);
 
@@ -149,13 +179,16 @@ public class NYTActivity extends CommonActivity {
 
     }
 
-
+    /**
+     * This method get called when btnClear get clicked.It will delete the articles from the DB.
+     * It removes the shared preference , clear the list,notify the adapter and remove data form the database.
+     */
     private void resetAction() {
         txtNYTSearch.setText("");
         datasource = new NYTsDataSource(this);
         datasource.open();
 
-        //delete all flights from DB
+        //delete all articles from DB
         for (NYT nyt : nytList ) {
             datasource.deleteNYT(nyt.getId());
         }
@@ -164,12 +197,15 @@ public class NYTActivity extends CommonActivity {
         nytList.clear();
         refreshListAdapter();
 
-        //clear shared preffs object
+        //clear shared preference object
         removeSharedPreference(NYT_SEARCH_TERM);
 
         hideKeyboard(NYTActivity.this);
         Toast.makeText(getApplicationContext(),  this.getResources().getString(R.string.reset_toast), Toast.LENGTH_SHORT).show();
     }
+    /**
+     * It concatenates the search word to the URL and execute the query
+     */
 
         private void searchAction() {
             String API_URL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=";
@@ -200,6 +236,12 @@ public class NYTActivity extends CommonActivity {
             }
     }
 
+    /**
+     * This method is not for tablet. This is for phone only and will be called on phone.
+     * If the delete button is pushed it will delete the article base on it's ID and position.
+     * IT gets result form fragment. If save button clicked, save it to the database.
+     * if delete button clicked, delete form list.
+     */
     //This function only gets called on the phone. The tablet never goes to a new activity
         @Override
         protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -214,6 +256,11 @@ public class NYTActivity extends CommonActivity {
             }
         }
 
+    /**
+     * It deletes the itme at the postion.
+     * @param id
+     * @param position
+     */
         public void deleteArticleId(long id, int position){
             Log.d("Deleting ID :" , " id="+ id + " at position= "+position);
             datasource.deleteNYT(id);
@@ -249,6 +296,12 @@ public class NYTActivity extends CommonActivity {
 
     }
 
+    /**
+     * This class takes care of the thread synchronization issues. It is a subclass of AsyncTask .
+     * In doInBackground function we do any long-lasting computations, network access, file writing
+     * It tells android to call onProgressUpdate with 3 as parameter
+     *
+     */
     // a subclass of AsyncTask                  Type1    Type2    Type3
     private class  NYTQuery extends AsyncTask<String, Integer, String>
 {
@@ -323,7 +376,10 @@ public class NYTActivity extends CommonActivity {
 
     }
 }
-        //it is not necessary for your program to run but it is here to update a progress indicators or information on your GUI
+
+    /**
+     *    It updates a progress indicators or information on your GUI
+     */
         @Override
         protected void onProgressUpdate(Integer... values) {
             progressBar.setProgress(values[0]);
@@ -335,9 +391,9 @@ public class NYTActivity extends CommonActivity {
             progressBar.setVisibility(View.INVISIBLE);
             refreshListAdapter();
             if(nytList.size() > 0)
-                Toast.makeText(getApplicationContext(), getResources().getString(R.string.nyt_articles_found_toast), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), getResources().getString(R.string.nyt_articles_found_toast), Toast.LENGTH_SHORT).show();// It shows a message when article is found for the user's search
             else
-                Toast.makeText(getApplicationContext(), getResources().getString(R.string.nyt_articles_notfound_toast), Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), getResources().getString(R.string.nyt_articles_notfound_toast), Toast.LENGTH_LONG).show();// It shows a message when no article is found for the user's search
         }
 
         private void pause(){
@@ -350,6 +406,9 @@ public class NYTActivity extends CommonActivity {
         }
     }
 
+    /**
+     * It saves the last topic that was searched to display the next time the application is launched.
+     */
     @Override
     protected void onResume() {
         super.onResume();

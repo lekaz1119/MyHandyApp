@@ -7,6 +7,12 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+
+
+/**
+ * This class if for creating and opening a database for the application. we define the file that will contain the data and
+ * the version that starts from 1 the columns that are id, title, article and link
+ */
 public class NYTsSQLiteHelper extends SQLiteOpenHelper {
     public static final String TABLE_NYT = "NYT_TAB";
     public static final String COLUMN_ID = "_id";
@@ -21,10 +27,21 @@ public class NYTsSQLiteHelper extends SQLiteOpenHelper {
     //the version number start at 1
     private static final int DATABASE_VERSION = 1;
 
+    /**
+     * It is the constructor and we pass the Activity where the database is being opened, the file that will contain the data, An object to create Cursor objects(null)
+     * and the database version
+     * @param context
+     */
+
     public NYTsSQLiteHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
+    /**
+     * First time when the database file doesn’t exist yet, this method gets called .
+     * It creates the table with the id, title, article and link.
+     * @param database
+     */
     @Override
     public void onCreate(SQLiteDatabase database) {
 
@@ -35,6 +52,12 @@ public class NYTsSQLiteHelper extends SQLiteOpenHelper {
         Log.d(NYTsSQLiteHelper.class.getName()," creating DB \n\n\n:");
     }
 
+    /**
+     * If the database does exist, and the version in the constructor is newer than the version that exists on the device, then onUpgrade gets called
+     * @param db
+     * @param oldVersion
+     * @param newVersion
+     */
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         Log.d(NYTsSQLiteHelper.class.getName(),
@@ -43,6 +66,13 @@ public class NYTsSQLiteHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NYT);
         onCreate(db);
     }
+
+    /**
+     * If the database does exist, and the version number in the constructor is lower than the version number that exists on the device, then onDowngrade gets called.
+     * @param db
+     * @param oldVersion
+     * @param newVersion
+     */
     @Override
     public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         Log.d(NYTsSQLiteHelper.class.getName(),
@@ -52,7 +82,12 @@ public class NYTsSQLiteHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    // helper method for debugging, prints all database colms and records
+
+    /**
+     * helper method for debugging, prints all database columns and records
+     * @param c
+     */
+
     public static void printCursor(Cursor c){
         Log.d(NYTsSQLiteHelper.class.getName()," Cursor information:");
         Log.d("Database Version: ",String.valueOf(DATABASE_VERSION));

@@ -13,6 +13,13 @@ import com.example.myhandyapp.listitems.NYT;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
+/**
+ *  In this class we define the column for our database which are column id , title, article and  link to the article.
+ *  It creates the NYT article in database and get the id. It retrieve the database record, create new object and add it.
+ */
+
 public class NYTsDataSource {
 
     // Database fields
@@ -25,21 +32,39 @@ public class NYTsDataSource {
             NYTsSQLiteHelper.LINK
     };
 
+    /**
+     * It is the constructor
+     * @param context
+     */
     public NYTsDataSource(Context context) {
         dbHelper = new NYTsSQLiteHelper(context);
     }
 
-
+    /**
+     * It opens the database
+     * @throws SQLException
+     */
     public void open() throws SQLException {
         database = dbHelper.getWritableDatabase();
     }
 
 
+    /**
+     * It closes the database
+     */
     public void close() {
         dbHelper.close();
     }
 
 
+    /**
+     * It creates NYT article in database and return the full NYI item java object
+     * Retrieve the DB  record, crete new object, add ID to it and return for further processing.
+     * @param title
+     * @param article
+     * @param link
+     * @return
+     */
     //create NYT article in database and return the full NYI item java object
     public NYT createNYT(String title, String article, String link) {
         ContentValues values = new ContentValues();
@@ -56,12 +81,22 @@ public class NYTsDataSource {
         cursor.close();
         return newNYT;
     }
+
+    /**
+     * It is delete function that delete using database id , and that updates the table
+     * @param id
+     */
+
     public void deleteNYT(long id ) {
         Log.d(NYTsSQLiteHelper.TABLE_NYT, " deleted with id: " + id);
         database.delete(NYTsSQLiteHelper.TABLE_NYT, NYTsSQLiteHelper.COLUMN_ID
                 + " = " + id, null);
     }
 
+    /**
+     * It is the List using the cursor that contains row from the query.
+     * @return nytObject
+     */
     public List<NYT> getAllNYTs() {
         List<NYT> nytObject = new ArrayList<NYT>();
 
@@ -81,7 +116,11 @@ public class NYTsDataSource {
     }
 
 
-    //add DB is to the t object
+    /**
+     * It adds the NYT object
+     * @param cursor
+     * @return
+     */
     private NYT cursorToNYT(Cursor cursor) {
         NYT nyt = new NYT();
         nyt.setId(cursor.getLong(0));

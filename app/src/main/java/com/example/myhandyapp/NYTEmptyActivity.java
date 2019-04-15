@@ -3,6 +3,12 @@ package com.example.myhandyapp;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+
+
+/**
+ * This activity send the information to the fragment class. It gets the data that was passed from FragmentExample
+ *
+ */
 public class NYTEmptyActivity extends AppCompatActivity {
 
     @Override
@@ -11,8 +17,6 @@ public class NYTEmptyActivity extends AppCompatActivity {
         setContentView(R.layout.activity_empty);
 
         Bundle dataToPass = getIntent().getExtras(); //get the data that was passed from FragmentExample
-
-        //This is copied directly from FragmentExample.java lines 47-54
         NYTFragment dFragment = new NYTFragment();
         dFragment.setArguments( dataToPass ); //pass data to the the fragment
         dFragment.setTablet(false); //tell the Fragment that it's on a phone.

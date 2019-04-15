@@ -18,6 +18,12 @@ import android.widget.Toast;
 import com.example.myhandyapp.listitems.NYT;
 import com.example.myhandyapp.sql.NYTsDataSource;
 
+
+/**
+ *  This class has the onCreateView that inside this method it inflates the layout for this fragment. shows the title, link and article.
+ *   and get the delete button and then delete the article and update the list.
+ *   After that it removes the fragment because it deleted it from the database.
+ */
 public class NYTFragment extends Fragment {
     private boolean isTablet;
     private Bundle dataFromActivity;
@@ -26,6 +32,16 @@ public class NYTFragment extends Fragment {
     public void setTablet(boolean tablet) {
         isTablet = tablet;
     }
+
+    /**
+     * This method inflates the layout and shows the title, link article txt.
+     * If it is on tablet both the list and details are on the screen.
+     * If it is on the phone You are only looking at the details, you need to go back to the previous list page
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
